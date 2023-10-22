@@ -1,31 +1,29 @@
 {
   "format": 1,
   "restore": {
-    "G:\\OneDrive - Óbudai egyetem\\project\\EQ66L2_HFT_2023241\\EQ66L2_HFT_2023241\\EQ66L2_HFT_2023241.csproj": {}
+    "/Users/Supii/Gitprojects/EQ66L2_HFT_2023241/EQ66L2_HFT_2023241/EQ66L2_HFT_2023241/EQ66L2_HFT_2023241/EQ66L2_HFT_2023241.csproj": {}
   },
   "projects": {
-    "G:\\OneDrive - Óbudai egyetem\\project\\EQ66L2_HFT_2023241\\EQ66L2_HFT_2023241\\EQ66L2_HFT_2023241.csproj": {
+    "/Users/Supii/Gitprojects/EQ66L2_HFT_2023241/EQ66L2_HFT_2023241/EQ66L2_HFT_2023241/EQ66L2_HFT_2023241/EQ66L2_HFT_2023241.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\OneDrive - Óbudai egyetem\\project\\EQ66L2_HFT_2023241\\EQ66L2_HFT_2023241\\EQ66L2_HFT_2023241.csproj",
+        "projectUniqueName": "/Users/Supii/Gitprojects/EQ66L2_HFT_2023241/EQ66L2_HFT_2023241/EQ66L2_HFT_2023241/EQ66L2_HFT_2023241/EQ66L2_HFT_2023241.csproj",
         "projectName": "EQ66L2_HFT_2023241",
-        "projectPath": "G:\\OneDrive - Óbudai egyetem\\project\\EQ66L2_HFT_2023241\\EQ66L2_HFT_2023241\\EQ66L2_HFT_2023241.csproj",
-        "packagesPath": "C:\\Users\\Supw2\\.nuget\\packages\\",
-        "outputPath": "G:\\OneDrive - Óbudai egyetem\\project\\EQ66L2_HFT_2023241\\EQ66L2_HFT_2023241\\obj\\",
+        "projectPath": "/Users/Supii/Gitprojects/EQ66L2_HFT_2023241/EQ66L2_HFT_2023241/EQ66L2_HFT_2023241/EQ66L2_HFT_2023241/EQ66L2_HFT_2023241.csproj",
+        "packagesPath": "/Users/Supii/.nuget/packages/",
+        "outputPath": "/Users/Supii/Gitprojects/EQ66L2_HFT_2023241/EQ66L2_HFT_2023241/EQ66L2_HFT_2023241/EQ66L2_HFT_2023241/obj/",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Supw2\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/Supii/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "/usr/local/share/dotnet/library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -59,7 +57,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.309/RuntimeIdentifierGraph.json"
         }
       }
     }
