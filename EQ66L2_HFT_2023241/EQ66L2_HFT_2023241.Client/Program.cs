@@ -6,13 +6,10 @@ namespace EQ66L2_HFT_2023241.Client
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+           
 
-            //
-            Console.WriteLine("XD");
 
-            Console.WriteLine("proba 2");
-            //
+
 
 
         }
