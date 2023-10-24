@@ -12,6 +12,13 @@ namespace EQ66L2_HFT_2023241.Client
             Console.WriteLine("XD");
 
             Console.WriteLine("proba 2");
+            //
+
+
         }
+    
+    
+    
+    
     }
 }
