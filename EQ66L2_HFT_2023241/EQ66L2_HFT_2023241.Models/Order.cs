@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace EQ66L2_HFT_2023241.Models
 {
-    internal class Order
+    public class Order
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -26,9 +26,9 @@ namespace EQ66L2_HFT_2023241.Models
         [ForeignKey(nameof(Product))]
         public int ProductID { get; set; }
 
-       
+       public virtual Customer Customer { get; set; }
 
-
+       public virtual  Product Product { get; set; }    
 
     }
 }

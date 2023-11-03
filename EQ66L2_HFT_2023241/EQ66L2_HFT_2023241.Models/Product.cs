@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace EQ66L2_HFT_2023241.Models
 {
-    internal class Product
+    public class Product
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -19,6 +19,11 @@ namespace EQ66L2_HFT_2023241.Models
 
         [StringLength(200)]
         public string ProductDescription { get; set; }
+
+        public virtual ICollection<Customer> Customers { get; set; }
+
+
+
 
     }
 }

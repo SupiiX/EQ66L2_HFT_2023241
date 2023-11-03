@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -16,6 +17,6 @@ namespace EQ66L2_HFT_2023241.Models
         [StringLength(200)]
         public string Email { get; set; }
 
-
+        public virtual ICollection<Product> Products { get; set; }
     }
 }
