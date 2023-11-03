@@ -19,9 +19,9 @@ namespace EQ66L2_HFT_2023241.Models
 
         public DateTime OrderDate { get; set; }
 
-
         [ForeignKey(nameof(Customer))]
         public int CustomerID { get; set; }
+
 
         [ForeignKey(nameof(Product))]
         public int ProductID { get; set; }
