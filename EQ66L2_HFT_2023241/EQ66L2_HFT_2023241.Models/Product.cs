@@ -22,7 +22,7 @@ namespace EQ66L2_HFT_2023241.Models
 
         public virtual ICollection<Customer> Customers { get; set; }
 
-
+        public virtual ICollection<Order> Orders { get; set; }
 
 
     }

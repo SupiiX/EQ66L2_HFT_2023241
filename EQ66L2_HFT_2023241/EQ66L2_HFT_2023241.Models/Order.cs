@@ -19,16 +19,16 @@ namespace EQ66L2_HFT_2023241.Models
 
         public DateTime OrderDate { get; set; }
 
-        [ForeignKey(nameof(Customer))]
+        //[ForeignKey(nameof(Customer))]
         public int CustomerID { get; set; }
 
 
-        [ForeignKey(nameof(Product))]
+        //[ForeignKey(nameof(Product))]
         public int ProductID { get; set; }
 
-       public virtual Customer Customer { get; set; }
+       public virtual Customer Customer { get; private set; }
 
-       public virtual  Product Product { get; set; }    
+       public virtual Product Product { get; private set; }    
 
     }
 }
