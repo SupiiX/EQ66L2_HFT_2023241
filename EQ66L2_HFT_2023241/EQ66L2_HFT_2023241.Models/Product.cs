@@ -17,7 +17,9 @@ namespace EQ66L2_HFT_2023241.Models
         [StringLength(200)]
         public string ProductName { get; set; }
 
-        public int Warranty { get; set; }
+        public int Warranty_year { get; set; }
+
+        public int Price { get; set; }
 
         public int ManufacturerID { get; set; }
 
