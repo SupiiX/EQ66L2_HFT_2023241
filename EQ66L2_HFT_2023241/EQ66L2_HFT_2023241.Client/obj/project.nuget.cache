@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "aJLu5jkQKfqWUqG+iBfs764ql/HR08BUHgq4dDF0QmiJQGy9SxgsDAuu3DbW72tUK6q/4VejUI48MAvXQIhwhw==",
+  "dgSpecHash": "aJh6al+nvQPgGvllXXFqy85p++mlNkOXhr88tEe8HWRDB5F0NQnhasul+jEv6ph72NI1BOliXcRvxrfR+9WyvQ==",
   "success": true,
-  "projectFilePath": "G:\\X_CP\\EQ66L2_HFT_2023241\\EQ66L2_HFT_2023241.Client\\EQ66L2_HFT_2023241.Client.csproj",
+  "projectFilePath": "G:\\X_\\EQ66L2_HFT_2023241\\EQ66L2_HFT_2023241.Client\\EQ66L2_HFT_2023241.Client.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Supw2\\.nuget\\packages\\microsoft.entityframeworkcore\\5.0.6\\microsoft.entityframeworkcore.5.0.6.nupkg.sha512",
     "C:\\Users\\Supw2\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\5.0.6\\microsoft.entityframeworkcore.abstractions.5.0.6.nupkg.sha512",
