@@ -15,6 +15,8 @@ namespace EQ66L2_HFT_2023241.Repository
        
         public DbSet<Product> Products { get; set; }
 
+        public DbSet<Manufacturer> Manufacturers { get; set; }
+
         public DBContext()
         {
             Database.EnsureCreated();

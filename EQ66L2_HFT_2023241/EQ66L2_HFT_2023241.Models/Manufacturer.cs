@@ -19,7 +19,6 @@ namespace EQ66L2_HFT_2023241.Models
 
         public string ManufacturerName { get; set;}
 
-
         [StringLength(150)]
 
         public string PlaceOf { get; set;}
@@ -28,6 +27,7 @@ namespace EQ66L2_HFT_2023241.Models
 
         public string ManufacturerDescription { get; set;}
 
+        public ICollection<Product> Products { get; set; }
 
     }
 }

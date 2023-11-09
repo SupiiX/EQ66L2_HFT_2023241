@@ -22,7 +22,6 @@ namespace EQ66L2_HFT_2023241.Models
         //[ForeignKey(nameof(Customer))]
         public int CustomerID { get; set; }
 
-
         //[ForeignKey(nameof(Product))]
         public int ProductID { get; set; }
 

@@ -17,13 +17,15 @@ namespace EQ66L2_HFT_2023241.Models
         [StringLength(200)]
         public string ProductName { get; set; }
 
-        [StringLength(200)]
-        public string ProductDescription { get; set; }
+        public int Warranty { get; set; }
+
+        public int ManufacturerID { get; set; }
 
         public virtual ICollection<Customer> Customers { get; set; }
 
         public virtual ICollection<Order> Orders { get; set; }
 
+        public Manufacturer Manufacturer { get; set; }
 
     }
 }
