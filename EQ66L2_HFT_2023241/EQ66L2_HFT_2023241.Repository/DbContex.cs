@@ -19,7 +19,7 @@ namespace EQ66L2_HFT_2023241.Repository
 
         public DBContext()
         {
-            Database.EnsureCreated();
+           this.Database.EnsureCreated();
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -28,13 +28,21 @@ namespace EQ66L2_HFT_2023241.Repository
 
             optionsBuilder.UseInMemoryDatabase("data").UseLazyLoadingProxies();
 
-
+            //
         }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Manufacturer>()
+                .HasMany(x => x.Products)
+                .WithOne(x => x.Manufacturer)
+                .HasForeignKey(x => x.ProductID)
+                .OnDelete(DeleteBehavior.Restrict);
+
+
 
 
             modelBuilder.Entity<Customer>()
