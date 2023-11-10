@@ -10,13 +10,13 @@ namespace EQ66L2_HFT_2023241.Repository
 {
     public class DBContext : DbContext
     {
-        public DbSet<Customer> Customers { get; set; }
+        public virtual DbSet<Customer> Customers { get; set; }
 
-        public DbSet<Order> Orders { get; set; }
+        public virtual DbSet<Order> Orders { get; set; }
        
-        public DbSet<Product> Products { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
 
-        public DbSet<Manufacturer> Manufacturers { get; set; }
+        public virtual DbSet<Manufacturer> Manufacturers { get; set; }
 
         public DBContext()
         {
