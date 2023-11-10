@@ -18,6 +18,8 @@ namespace EQ66L2_HFT_2023241.Repository
 
         public void Delete(int id)
         {
+           // dbContext.Remove(id);
+            
             dbContext.Set<T>().Remove(Read(id));
             dbContext.SaveChanges();
         }
@@ -31,6 +33,9 @@ namespace EQ66L2_HFT_2023241.Repository
 
         public void Update(T value)
         {
+
+            //dbContext.Update(value);
+
             dbContext.Set<T>().Add(value);
             dbContext.SaveChanges();
         }
