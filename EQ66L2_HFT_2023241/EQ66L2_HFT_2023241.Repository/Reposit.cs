@@ -21,6 +21,7 @@ namespace EQ66L2_HFT_2023241.Repository
            // dbContext.Remove(id);
             
             dbContext.Set<T>().Remove(Read(id));
+
             dbContext.SaveChanges();
         }
 
