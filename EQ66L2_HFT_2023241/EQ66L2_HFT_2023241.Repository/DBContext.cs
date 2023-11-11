@@ -121,7 +121,7 @@ namespace EQ66L2_HFT_2023241.Repository
             
             List<Product> products = new List<Product>();
 
-            products.Add(new Product { ProductID = 1, Price = 150 ,ProductName = "Mikro", Warranty_year = 3, ManufacturerID = 2 });
+            products.Add(new Product { ProductID = 1, Price = 150 ,ProductName = "Mikro", Warranty_year = 3, ManufacturerID = 1 });
             products.Add(new Product { ProductID = 2, Price = 120, ProductName = "LED TV", Warranty_year = 2, ManufacturerID = 3 });
             products.Add(new Product { ProductID = 3, Price = 300, ProductName = "iPhone 13", Warranty_year = 1, ManufacturerID = 4 });
             products.Add(new Product { ProductID = 4, Price = 80, ProductName = "Wireless Mouse", Warranty_year = 2, ManufacturerID = 5 });
