@@ -205,6 +205,16 @@ namespace EQ66L2_HFT_2023241.Repository
             orders.Add(new Order { OrderID = 25, Quantity = 4, OrderDate = new DateTime(2022, 11, 9), CustomerID = customers[13].CustomerID, ProductID = products[17].ProductID });
 
 
+            modelBuilder.Entity<Manufacturer>().HasData(customers);
+
+            modelBuilder.Entity<Product>().HasData(products);
+
+            modelBuilder.Entity<Customer>().HasData(customers);
+
+            modelBuilder.Entity<Order>().HasData(orders);
+
+
+
 
         }
 
