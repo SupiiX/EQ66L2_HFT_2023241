@@ -16,6 +16,10 @@ namespace EQ66L2_HFT_2023241.Repository
             this.dbContext = dbContext;
         }
 
+
+        public void Create() { }
+
+
         public void Delete(int id)
         {
            // dbContext.Remove(id);

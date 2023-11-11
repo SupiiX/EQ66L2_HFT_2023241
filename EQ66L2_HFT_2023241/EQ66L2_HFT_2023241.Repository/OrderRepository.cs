@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EQ66L2_HFT_2023241.Repository
 {
-    internal class OrderRepository : Reposit<Order>, IOrderRepository
+    public class OrderRepository : Reposit<Order>, IOrderRepository
     {
         public OrderRepository(DBContext dbContext) : base(dbContext)
         {

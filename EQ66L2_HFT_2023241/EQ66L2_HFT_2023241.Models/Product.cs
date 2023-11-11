@@ -27,7 +27,7 @@ namespace EQ66L2_HFT_2023241.Models
 
         public virtual ICollection<Order> Orders { get; set; }
 
-        public Manufacturer Manufacturer { get; set; }
+        public virtual Manufacturer Manufacturer { get; set; }
 
     }
 }
