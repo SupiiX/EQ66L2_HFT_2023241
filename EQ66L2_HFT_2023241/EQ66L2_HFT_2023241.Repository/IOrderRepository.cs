@@ -9,6 +9,9 @@ namespace EQ66L2_HFT_2023241.Repository
 {
     internal interface IOrderRepository : IReposit<Order>
     {
+        void ChangeQuantity(int id, int Quantity);
+
+        void ChangeProduct(int id, int NewProductId);
 
     }
 }

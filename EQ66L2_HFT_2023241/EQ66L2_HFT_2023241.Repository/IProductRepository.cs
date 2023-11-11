@@ -9,6 +9,8 @@ namespace EQ66L2_HFT_2023241.Repository
 {
     internal interface IProductRepository : IReposit<Product>
     {
+    void UpdateProduct(Product product);
         
+    void ChangeManufacturer(int id, int NewManufacturerId);
     }
 }
