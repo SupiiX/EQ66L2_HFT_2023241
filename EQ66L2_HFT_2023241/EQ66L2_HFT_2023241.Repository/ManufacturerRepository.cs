@@ -10,6 +10,7 @@ namespace EQ66L2_HFT_2023241.Repository
 {
     public class ManufacturerRepository : Reposit<Manufacturer>, IManufacturerRepository
     {
+
         public ManufacturerRepository(DBContext dbContext) : base(dbContext)
         {
         }
@@ -40,7 +41,24 @@ namespace EQ66L2_HFT_2023241.Repository
 
             // exeption?
 
+            //dbContext.Manufacturers.FirstOrDefault(x => x.ManufacturerID == id); 
+
             return ReadAll().FirstOrDefault(x =>x.ManufacturerID == id);
+        }
+
+        public override void Update(Manufacturer value)
+        {
+
+            var OldData = Read(value.ManufacturerID);
+
+            foreach (var item in OldData.GetType().GetProperties())
+            {
+                //  
+
+                item.SetValue(OldData, item.GetValue(value));
+
+            }
+            dbContext.SaveChanges();
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using EQ66L2_HFT_2023241.Repository;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace EQ66L2_HFT_2023241.Client
@@ -22,19 +23,19 @@ namespace EQ66L2_HFT_2023241.Client
             ProductRepository productRepository = new ProductRepository(db);
             OrderRepository orderRepository = new OrderRepository(db);
 
-            Method1();
+           // Method1();
 
             
 
         }
     
-       static void Method1()
-        {
-            DBContext dBContext = new DBContext();
+       //static IEnumerable<T> Method1(T)
+       // {
+       //     DBContext dBContext = new DBContext();
 
-            var i = dBContext.Orders.ToList().Where(x => x.Quantity > 2 && x.Product.Manufacturer.PlaceOf == "Hungary").Select(x => x.Customer.CustomerName);
+       //     var i = dBContext.Orders.ToList().Where(x => x.Quantity > 2 && x.Product.Manufacturer.PlaceOf == "Hungary").Select(x => x.Customer.CustomerName);
             
-        }
+       // }
    
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,9 +17,13 @@ namespace EQ66L2_HFT_2023241.Repository
             this.dbContext = dbContext;
         }
 
+        public void Create(T item)
+        {
 
-        public void Create() { }
+           dbContext.Set<T>().Add(item);
 
+            dbContext.SaveChanges();
+        }
 
         public void Delete(int id)
         {
@@ -29,20 +34,28 @@ namespace EQ66L2_HFT_2023241.Repository
             dbContext.SaveChanges();
         }
 
-        public abstract T Read(int id);
+       
+
+        //public T Read(int id)
+        //{
+        //    dbContext.Set<T>().FirstOrDefault(x => x. == id);
+        //}
+
+        //
 
         public IQueryable<T> ReadAll()
         {
             return dbContext.Set<T>();
         }
 
-        public void Update(T value)
-        {
+        //
 
-            //dbContext.Update(value);
+        public abstract void Update(T value);
 
-            dbContext.Set<T>().Add(value);
-            dbContext.SaveChanges();
-        }
+        public abstract T Read(int id);
+
+    
+
+
     }
 }

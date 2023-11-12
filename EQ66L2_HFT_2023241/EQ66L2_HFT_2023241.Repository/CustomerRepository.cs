@@ -35,5 +35,18 @@ namespace EQ66L2_HFT_2023241.Repository
             return ReadAll().FirstOrDefault(x => x.CustomerID ==id);
         }
 
+        public override void Update(Customer value)
+        {
+            var OldData = Read(value.CustomerID);
+
+            foreach (var item in OldData.GetType().GetProperties())
+            {
+                //  
+
+                item.SetValue(OldData, item.GetValue(value));
+
+            }
+            dbContext.SaveChanges();
+        }
     }
 }

@@ -8,9 +8,11 @@ namespace EQ66L2_HFT_2023241.Repository
 {
     public interface IReposit<T>
     {
+        IQueryable<T> ReadAll();
+
         T Read(int id);
 
-        IQueryable<T> ReadAll();
+        void Create(T item);
         
         void Update(T value);
 

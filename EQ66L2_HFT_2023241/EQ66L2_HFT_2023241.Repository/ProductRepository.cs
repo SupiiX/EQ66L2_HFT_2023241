@@ -35,18 +35,14 @@ namespace EQ66L2_HFT_2023241.Repository
 
             //which product do we wanna update 
             var OldProduct = Read(product.ProductID);
-          
             var oldprop = OldProduct.GetType().GetProperties();
-
             //List<string> strings = new List<string>();
-
             //foreach (var prop in oldprop)
             //{
             //    strings.Add(prop.GetValue(prop, OldProduct));
 
             //}
-            
-
+       
             // OldProduct.ProductID = product.ProductID;
 
             OldProduct.ProductName = product.ProductName;
@@ -61,16 +57,6 @@ namespace EQ66L2_HFT_2023241.Repository
 
             OldProduct.Warranty_year = product.Warranty_year;
 
-
-            //var oldPatient = this.GetOne(newPatient.ID);
-            //oldPatient.ID = newPatient.ID;
-            //oldPatient.Name = newPatient.Name;
-            //oldPatient.Age = newPatient.Age;
-            //oldPatient.Gender = newPatient.Gender;
-            //oldPatient.RegistrationTime = newPatient.RegistrationTime;
-            
-
-
             dbContext.SaveChanges();
             
         }
@@ -80,5 +66,34 @@ namespace EQ66L2_HFT_2023241.Repository
             return ReadAll().FirstOrDefault(x => x.ProductID == id);
         }
 
+        public override void Update(Product value)
+        {
+            //var OldProduct = Read(value.ProductID);
+
+            //OldProduct.ProductName = value.ProductName;
+
+            //OldProduct.ManufacturerID = value.ManufacturerID;
+
+            //OldProduct.Manufacturer = value.Manufacturer;
+
+            //OldProduct.Orders = value.Orders;
+
+            //OldProduct.Price = value.Price;
+
+            //OldProduct.Warranty_year = value.Warranty_year;
+
+            var OldData = Read(value.ProductID);
+
+            foreach (var item in OldData.GetType().GetProperties())
+            {
+                //  
+
+                item.SetValue(OldData, item.GetValue(value));
+
+            }
+            dbContext.SaveChanges();
+
+            dbContext.SaveChanges();
+        }
     }
 }

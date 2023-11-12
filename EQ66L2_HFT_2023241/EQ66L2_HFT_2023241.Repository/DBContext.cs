@@ -27,6 +27,9 @@ namespace EQ66L2_HFT_2023241.Repository
         {
             base.OnConfiguring(optionsBuilder);
 
+
+            //optionsBuilder.UseSqlServer("");
+
             optionsBuilder.UseInMemoryDatabase("data").UseLazyLoadingProxies();
 
             //
