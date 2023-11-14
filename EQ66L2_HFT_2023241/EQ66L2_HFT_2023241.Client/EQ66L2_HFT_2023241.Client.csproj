@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\EQ66L2_HFT_2023241.Logic\EQ66L2_HFT_2023241.Logic.csproj" />
     <ProjectReference Include="..\EQ66L2_HFT_2023241.Models\EQ66L2_HFT_2023241.Models.csproj" />
     <ProjectReference Include="..\EQ66L2_HFT_2023241.Repository\EQ66L2_HFT_2023241.Repository.csproj" />
   </ItemGroup>

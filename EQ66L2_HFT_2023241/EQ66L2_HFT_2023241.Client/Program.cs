@@ -1,4 +1,6 @@
-﻿using EQ66L2_HFT_2023241.Repository;
+﻿using EQ66L2_HFT_2023241.Logic;
+using EQ66L2_HFT_2023241.Models;
+using EQ66L2_HFT_2023241.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,19 +25,20 @@ namespace EQ66L2_HFT_2023241.Client
             ProductRepository productRepository = new ProductRepository(db);
             OrderRepository orderRepository = new OrderRepository(db);
 
+
+            ManufacturerRepository manufacturerRepository1 = new ManufacturerRepository(db);
+            ProductRepository productRepository1 = new ProductRepository(db);
+
+            var logic = new SupplyLogic(productRepository1, manufacturerRepository1);
+
+            var item = logic.ReadAll_Manufacturer();
+
+            
             // Method1();
 
             ; 
 
         }
-    
-       //static IEnumerable<T> Method1(T)
-       // {
-       //     DBContext dBContext = new DBContext();
-
-       //     var i = dBContext.Orders.ToList().Where(x => x.Quantity > 2 && x.Product.Manufacturer.PlaceOf == "Hungary").Select(x => x.Customer.CustomerName);
-            
-       // }
-   
+             
     }
 }

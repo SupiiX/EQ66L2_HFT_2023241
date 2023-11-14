@@ -92,7 +92,14 @@ namespace EQ66L2_HFT_2023241.Logic
         //////////// Non Crud methods
 
 
+        public void ManufactureProducts(int id)
+        {
+            // listaba kene visszaadni a termekeket
 
+            // az adott 
+            
+
+        }
 
 
 

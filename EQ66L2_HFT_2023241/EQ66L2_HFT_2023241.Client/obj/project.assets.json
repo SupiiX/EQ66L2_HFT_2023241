@@ -2464,6 +2464,22 @@
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
       },
+      "EQ66L2_HFT_2023241.Logic/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "EQ66L2_HFT_2023241.Models": "1.0.0",
+          "EQ66L2_HFT_2023241.Repository": "1.0.0",
+          "Microsoft.EntityFrameworkCore": "5.0.6",
+          "Microsoft.EntityFrameworkCore.InMemory": "5.0.6"
+        },
+        "compile": {
+          "bin/placeholder/EQ66L2_HFT_2023241.Logic.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/EQ66L2_HFT_2023241.Logic.dll": {}
+        }
+      },
       "EQ66L2_HFT_2023241.Models/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
@@ -7771,6 +7787,11 @@
         "system.xml.xmlserializer.nuspec"
       ]
     },
+    "EQ66L2_HFT_2023241.Logic/1.0.0": {
+      "type": "project",
+      "path": "../EQ66L2_HFT_2023241.Logic/EQ66L2_HFT_2023241.Logic.csproj",
+      "msbuildProject": "../EQ66L2_HFT_2023241.Logic/EQ66L2_HFT_2023241.Logic.csproj"
+    },
     "EQ66L2_HFT_2023241.Models/1.0.0": {
       "type": "project",
       "path": "../EQ66L2_HFT_2023241.Models/EQ66L2_HFT_2023241.Models.csproj",
@@ -7784,6 +7805,7 @@
   },
   "projectFileDependencyGroups": {
     "net5.0": [
+      "EQ66L2_HFT_2023241.Logic >= 1.0.0",
       "EQ66L2_HFT_2023241.Models >= 1.0.0",
       "EQ66L2_HFT_2023241.Repository >= 1.0.0",
       "Microsoft.EntityFrameworkCore >= 5.0.6",
@@ -7822,6 +7844,9 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
+            "G:\\X_\\EQ66L2_HFT_2023241\\EQ66L2_HFT_2023241.Logic\\EQ66L2_HFT_2023241.Logic.csproj": {
+              "projectPath": "G:\\X_\\EQ66L2_HFT_2023241\\EQ66L2_HFT_2023241.Logic\\EQ66L2_HFT_2023241.Logic.csproj"
+            },
             "G:\\X_\\EQ66L2_HFT_2023241\\EQ66L2_HFT_2023241.Models\\EQ66L2_HFT_2023241.Models.csproj": {
               "projectPath": "G:\\X_\\EQ66L2_HFT_2023241\\EQ66L2_HFT_2023241.Models\\EQ66L2_HFT_2023241.Models.csproj"
             },
