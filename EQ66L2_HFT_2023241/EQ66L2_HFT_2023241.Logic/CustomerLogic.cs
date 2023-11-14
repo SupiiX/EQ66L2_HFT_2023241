@@ -9,7 +9,7 @@ using EQ66L2_HFT_2023241.Repository;
 
 namespace EQ66L2_HFT_2023241.Logic
 {
-    public class CustomerLogic
+    public class CustomerLogic : ICustomerLogic
     {
         ICustomerRepository CustomerRepository;
 
@@ -20,7 +20,7 @@ namespace EQ66L2_HFT_2023241.Logic
 
         // CRUD
 
-        
+
         public void Create(Customer item)
         {
             CustomerRepository.Create(item);
@@ -50,11 +50,11 @@ namespace EQ66L2_HFT_2023241.Logic
         {
             CustomerRepository.ChangeEmail(id, email);
         }
-    
+
         /// Non CRUD
 
 
-    
-    
+
+
     }
 }
