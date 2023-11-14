@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace EQ66L2_HFT_2023241.Repository
 {
-    internal interface IManufacturerRepository : IReposit<Manufacturer> 
+    public interface IManufacturerRepository : IReposit<Manufacturer> 
     {
 
-        void Origin(int id, string County);
+        void ChangePlace(int id, string County);
 
     }
 }

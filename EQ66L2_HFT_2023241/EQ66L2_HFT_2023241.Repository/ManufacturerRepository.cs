@@ -15,7 +15,7 @@ namespace EQ66L2_HFT_2023241.Repository
         {
         }
 
-        public void Origin(int id, string County)
+        public void ChangePlace(int id, string County)
         {
             var Manufacturer = Read(id);
 

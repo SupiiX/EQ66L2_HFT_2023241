@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EQ66L2_HFT_2023241.Repository
 {
-    internal interface ICustomerRepository : IReposit<Customer>
+    public interface ICustomerRepository : IReposit<Customer>
     {
 
         void ChangeEmail(int id, string email);

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EQ66L2_HFT_2023241.Repository
 {
-    internal interface IOrderRepository : IReposit<Order>
+    public interface IOrderRepository : IReposit<Order>
     {
         void ChangeQuantity(int id, int Quantity);
 
