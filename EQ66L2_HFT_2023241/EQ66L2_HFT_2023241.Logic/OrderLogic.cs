@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace EQ66L2_HFT_2023241.Logic
 {
-    public class OrderLogic 
+    public class OrderLogic : IOrderLogic
     {
         IOrderRepository orderRepository;
 
@@ -20,7 +20,7 @@ namespace EQ66L2_HFT_2023241.Logic
 
         /// CRUD 
 
-        
+
         public void Create(Order item)
         {
             orderRepository.Create(item);
@@ -33,7 +33,7 @@ namespace EQ66L2_HFT_2023241.Logic
 
         public Order Read(int id)
         {
-           return orderRepository.Read(id);
+            return orderRepository.Read(id);
         }
 
         public IEnumerable<Order> ReadAll()
