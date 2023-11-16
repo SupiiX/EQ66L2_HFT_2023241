@@ -34,7 +34,7 @@ namespace EQ66L2_HFT_2023241.Client
 
             //////
 
-            var I = SupplyLogic.ManufactureProducts();
+            var I = SupplyLogic.ManufactureProducts().ToList();
 
 
 

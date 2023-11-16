@@ -97,14 +97,13 @@ namespace EQ66L2_HFT_2023241.Logic
 
             return ProductReposit.ReadAll().Select(x => new
             {
-                place = x.Manufacturer.PlaceOf,
+                name = x.ProductName,
 
-                gari = x.Warranty_year,
+                warranty = x.Warranty_year,
 
-                emberot = x.Customers.Count(),
+                a = x.Price,
 
-
-            }).Where(x => x.place != "China" && x.gari > 1 && x.emberot > 1);
+            }).Where(x => x.warranty > 1 && x.a > 100);
 
 
         }
