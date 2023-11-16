@@ -20,10 +20,10 @@ namespace EQ66L2_HFT_2023241.Client
             var d = db.Customers.ToArray();
 
             
-            CustomerRepository customerRepository = new CustomerRepository(db);
-            ManufacturerRepository manufacturerRepository = new ManufacturerRepository(db);
-            ProductRepository productRepository = new ProductRepository(db);
-            OrderRepository orderRepository = new OrderRepository(db);
+            //CustomerRepository customerRepository = new CustomerRepository(db);
+            //ManufacturerRepository manufacturerRepository = new ManufacturerRepository(db);
+            //ProductRepository productRepository = new ProductRepository(db);
+            //OrderRepository orderRepository = new OrderRepository(db);
 
 
             ManufacturerRepository manufacturerRepository1 = new ManufacturerRepository(db);
