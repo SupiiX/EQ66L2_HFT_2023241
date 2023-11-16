@@ -30,10 +30,11 @@ namespace EQ66L2_HFT_2023241.Client
 
             var OrderLogic = new OrderLogic(orderRepository);
 
-            var CustomerLogic = new CustomerLogic(customerRepository); 
-                        
+            var CustomerLogic = new CustomerLogic(customerRepository);
+
             //////
 
+            var I = SupplyLogic.ManufactureProducts();
 
 
 
