@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using EQ66L2_HFT_2023241.Logic.Interfaces;
 using EQ66L2_HFT_2023241.Models;
 using EQ66L2_HFT_2023241.Repository;
 
