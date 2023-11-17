@@ -1,6 +1,7 @@
 ﻿using EQ66L2_HFT_2023241.Logic;
 using EQ66L2_HFT_2023241.Models;
 using EQ66L2_HFT_2023241.Repository;
+using Microsoft.EntityFrameworkCore.InMemory.Query.Internal;
 using Moq;
 using NUnit.Framework;
 using System;
@@ -51,10 +52,27 @@ namespace EQ66L2_HFT_2023241.Test
             }.AsQueryable());
 
             SupplyLogic = new SupplyLogic(mockProductRepo.Object, mockManufacturerRepo.Object);
+          }
+
+        [Test]
+        public void ManufactureProductsTest()
+        {
+            //sample
+
+            var actual = SupplyLogic.ManufactureProducts().ToList();
+
+            var expeted = new List<AnonymousObject>()
+            {
+                
+            };
+
+            Assert.AreEqual(actual, expeted);
+
 
 
 
         }
+        
 
 
 
