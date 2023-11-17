@@ -58,7 +58,46 @@ namespace EQ66L2_HFT_2023241.Logic
             orderRepository.ChangeQuantity(id, Quantity);
         }
 
+        //////////////////////////////////////////////////
         /// Non CRUD
+
+
+        public void Query_1(string Country)
+        {
+            // parameteresen megadott orszaágban, kik gyártanak 
+
+        }
+
+        public IEnumerable<object> Query_2()
+        {
+            // melyik a legnépszerübb termék ?  / mennyit vásárolnak belőle-/kik-hol gyartja  
+
+            //  return orderRepository.ReadAll().GroupBy(x => x.Quantity).ToList();
+
+
+            //var quantityProperty = orderRepository.ReadAll();
+
+            //return orderRepository.ReadAll().Include(x => x.Product).GroupBy(x => x.ProductID).OrderByDescending(x=> x.Sum(x => x.Quantity)).Select(x => new
+            //{
+            //    Id = x.Key,
+            //    Name = x.First().Product.ProductName,
+            //    Much = x.Sum(x => x.Quantity)
+
+
+            //}).ToList();
+
+
+            return orderRepository.ReadAll().GroupBy(x => x.ProductID).OrderByDescending(x => x.Sum(x => x.Quantity)).Select(x => x).ToList();
+
+
+
+
+
+        }
+
+        
+
+
 
         public IEnumerable<object> MelyikOrszagbanGyartjakALegtöbbetvasarolttermeket()
         {
@@ -114,7 +153,7 @@ namespace EQ66L2_HFT_2023241.Logic
         }
 
 
-        public int Query()
+        public int Queryyyyyyy()
         {
             return orderRepository.ReadAll().Select(x => new
             {

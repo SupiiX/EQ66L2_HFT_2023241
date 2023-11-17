@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace EQ66L2_HFT_2023241.Client
 {
-    internal class Program
+    public class Program
     {
         static void Main(string[] args)
         {
@@ -35,6 +35,9 @@ namespace EQ66L2_HFT_2023241.Client
             //////
 
             var Q = OrderLogic.query();
+
+            var i = OrderLogic.Query_2();
+
 
             var I = SupplyLogic.ManufactureProducts().ToList();
 
