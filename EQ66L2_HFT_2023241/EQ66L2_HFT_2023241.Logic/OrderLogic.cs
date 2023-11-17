@@ -86,10 +86,22 @@ namespace EQ66L2_HFT_2023241.Logic
 
             //}).ToList();
 
+            // elötte readall().include(x => objektum)...list=() adatot begyujteni 
 
-            return orderRepository.ReadAll().GroupBy(x => x.ProductID).OrderByDescending(x => x.Sum(x => x.Quantity)).Select(x => x).ToList();
+           // var F = orderRepository.ReadAll().GroupBy(x => x.ProductID).OrderByDescending(x => x.Sum(x => x.Quantity)).Select(x => new { K = x.Key }).ToList();
 
+            return from X in orderRepository.ReadAll()
+                   group X by new { X.ProductID, X.Product.ProductName } into grop
+                   orderby grop.Sum(x => x.Quantity) descending
+                   select new
+                   {
+                       id = grop.Key,
 
+                       //Name = grop.Key.ProductName,
+
+                       count = grop.Sum(x => x.Quantity)
+
+                   };
 
 
 
