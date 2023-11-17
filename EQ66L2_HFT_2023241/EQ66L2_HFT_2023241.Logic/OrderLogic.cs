@@ -133,6 +133,7 @@ namespace EQ66L2_HFT_2023241.Logic
         {
             // Először lekérdezzük a rendeléseket és a hozzájuk tartozó vevőket egy listába
             var orders = orderRepository.ReadAll().Include(x => x.Customer).ToList();
+            
 
             // Majd a listán végzünk csoportosítást és kiválasztást
             return orders.Select(x => x.Customer).GroupBy(x => x.CustomerID).Select(x => new

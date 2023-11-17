@@ -34,6 +34,8 @@ namespace EQ66L2_HFT_2023241.Client
 
             //////
 
+            var Q = OrderLogic.query();
+
             var I = SupplyLogic.ManufactureProducts().ToList();
 
 
