@@ -16,11 +16,10 @@ namespace EQ66L2_HFT_2023241.Client
             DBContext db = new DBContext();
 
             //test datafill
-            var a = db.Products.ToArray();
-            var b = db.Manufacturers.ToArray();
-            var c = db.Orders.ToArray();
-            var d = db.Customers.ToArray();
-
+            //var a = db.Products.ToArray();
+            //var b = db.Manufacturers.ToArray();
+            //var c = db.Orders.ToArray();
+            //var d = db.Customers.ToArray();
 
             CustomerRepository customerRepository = new CustomerRepository(db);
             ManufacturerRepository manufacturerRepository = new ManufacturerRepository(db);
@@ -28,12 +27,10 @@ namespace EQ66L2_HFT_2023241.Client
             OrderRepository orderRepository = new OrderRepository(db);
 
             var SupplyLogic = new SupplyLogic(productRepository, manufacturerRepository);
-
             var OrderLogic = new OrderLogic(orderRepository);
-
             var CustomerLogic = new CustomerLogic(customerRepository);
 
-            //////
+            /////////////////////////////////////////////////////////////////
 
             var Q = OrderLogic.query();
 
@@ -41,7 +38,7 @@ namespace EQ66L2_HFT_2023241.Client
 
             var I = SupplyLogic.ManufactureProducts().ToList();
 
-
+            ;
             
 
 

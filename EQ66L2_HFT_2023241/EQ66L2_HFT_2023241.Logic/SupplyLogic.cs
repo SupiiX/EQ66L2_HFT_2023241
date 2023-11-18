@@ -104,6 +104,18 @@ namespace EQ66L2_HFT_2023241.Logic
         //////////// Non Crud methods
 
 
+
+
+        public void Query_1(string Country)
+        {
+            // parameteresen megadott orszaágban, kik gyártanak 
+
+
+
+
+        }
+
+
         public IEnumerable<object> ManufactureProducts()
         {
 

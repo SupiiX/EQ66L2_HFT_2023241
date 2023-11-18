@@ -77,47 +77,29 @@ namespace EQ66L2_HFT_2023241.Logic
         //////////////////////////////////////////////////
         /// Non CRUD
 
+     
 
-        public void Query_1(string Country)
+
+
+        public IEnumerable<PupularPrd> Query_2()
         {
-            // parameteresen megadott orszaágban, kik gyártanak 
+            // melyik a elso 3 legnépszerübb termék (legtöbbet vásárolt) mennyit vásárolnak belőle-/kik-hol gyartja  
 
-        }
-
-        public IEnumerable<object> Query_2()
-        {
-            // melyik a legnépszerübb termék ?  / mennyit vásárolnak belőle-/kik-hol gyartja  
-
-            //  return orderRepository.ReadAll().GroupBy(x => x.Quantity).ToList();
-            //var quantityProperty = orderRepository.ReadAll();
-
-            //return orderRepository.ReadAll().Include(x => x.Product).GroupBy(x => x.ProductID).OrderByDescending(x=> x.Sum(x => x.Quantity)).Select(x => new
-            //{
-            //    Id = x.Key,
-            //    Name = x.First().Product.ProductName,
-            //    Much = x.Sum(x => x.Quantity)
-
-
-            //}).ToList();
-
-            // elötte readall().include(x => objektum)...list=() adatot begyujteni 
-
-           // var F = orderRepository.ReadAll().GroupBy(x => x.ProductID).OrderByDescending(x => x.Sum(x => x.Quantity)).Select(x => new { K = x.Key }).ToList();
-
-            return from X in orderRepository.ReadAll().Include(x => x.Product).ToList()
-                   group X by new { X.ProductID, X.Product.ProductName} into grop
+            return (from X in orderRepository.ReadAll().Include(x => x.Product).ToList()
+                   group X by new { X.ProductID, X.Product.ProductName } into grop
                    orderby grop.Sum(x => x.Quantity) descending
-                   select new
+                   select new PupularPrd
                    {
-                       id = grop.Key,
+                       //id = grop.Key,
+                       productName = grop.Key.ProductName,
 
-                       b = grop.FirstOrDefault().Product.Manufacturer.ManufacturerName,
+                       Count = grop.Sum(x => x.Quantity),
 
-                       Name = grop.Key.ProductName,
+                       ManufacturerName = grop.FirstOrDefault().Product.Manufacturer.ManufacturerName,
 
-                       count = grop.Sum(x => x.Quantity)
+                       MadeIn = grop.FirstOrDefault().Product.Manufacturer.PlaceOf
 
-                   };
+                   }).Take(3);
 
 
 
@@ -212,11 +194,16 @@ namespace EQ66L2_HFT_2023241.Logic
 
 
         }
+    }
 
-
-
-
+    public class PupularPrd
+    {
+        public string productName;
+        public int Count;
+        public string ManufacturerName;
+        public string MadeIn;
 
 
     }
+
 }

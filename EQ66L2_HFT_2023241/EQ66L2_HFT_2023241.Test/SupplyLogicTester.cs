@@ -55,6 +55,12 @@ namespace EQ66L2_HFT_2023241.Test
           }
 
         [Test]
+        public void Create_Product_Correcto()
+        {
+            var Product = new Product() { ProductName = "CocaCola", Price = 500};
+        }
+
+        [Test]
         public void ManufactureProductsTest()
         {
             //sample

@@ -29,7 +29,7 @@ namespace EQ66L2_HFT_2023241.Endpoint
             services.AddTransient<ICustomerLogic, CustomerLogic>();
 
 
-            services.AddControllers();
+          //  services.AddControllers();
             //
 
 
