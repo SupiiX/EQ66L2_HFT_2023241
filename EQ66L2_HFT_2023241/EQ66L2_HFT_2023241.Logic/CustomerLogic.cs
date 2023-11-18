@@ -24,6 +24,12 @@ namespace EQ66L2_HFT_2023241.Logic
 
         public void Create(Customer item)
         {
+            if (item.CustomerName.Length < 3 )
+            {
+                throw new Exception("Name is too short");
+
+            }
+
             CustomerRepository.Create(item);
         }
 

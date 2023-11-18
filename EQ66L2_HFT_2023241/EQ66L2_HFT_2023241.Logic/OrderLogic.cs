@@ -25,6 +25,17 @@ namespace EQ66L2_HFT_2023241.Logic
 
         public void Create(Order item)
         {
+            if (item.CustomerID <= 0 )
+            {
+                throw new Exception("Customer ID error");
+
+            }
+            if (item.OrderDate > DateTime.Now ) 
+            {
+                throw new Exception("Order Date Error");
+            
+            }
+
             orderRepository.Create(item);
         }
 
@@ -73,8 +84,6 @@ namespace EQ66L2_HFT_2023241.Logic
             // melyik a legnépszerübb termék ?  / mennyit vásárolnak belőle-/kik-hol gyartja  
 
             //  return orderRepository.ReadAll().GroupBy(x => x.Quantity).ToList();
-
-
             //var quantityProperty = orderRepository.ReadAll();
 
             //return orderRepository.ReadAll().Include(x => x.Product).GroupBy(x => x.ProductID).OrderByDescending(x=> x.Sum(x => x.Quantity)).Select(x => new
@@ -90,14 +99,16 @@ namespace EQ66L2_HFT_2023241.Logic
 
            // var F = orderRepository.ReadAll().GroupBy(x => x.ProductID).OrderByDescending(x => x.Sum(x => x.Quantity)).Select(x => new { K = x.Key }).ToList();
 
-            return from X in orderRepository.ReadAll()
-                   group X by new { X.ProductID, X.Product.ProductName } into grop
+            return from X in orderRepository.ReadAll().Include(x => x.Product).ToList()
+                   group X by new { X.ProductID, X.Product.ProductName} into grop
                    orderby grop.Sum(x => x.Quantity) descending
                    select new
                    {
                        id = grop.Key,
 
-                       //Name = grop.Key.ProductName,
+                       b = grop.FirstOrDefault().Product.Manufacturer.ManufacturerName,
+
+                       Name = grop.Key.ProductName,
 
                        count = grop.Sum(x => x.Quantity)
 

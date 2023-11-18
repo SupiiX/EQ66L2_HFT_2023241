@@ -28,7 +28,11 @@ namespace EQ66L2_HFT_2023241.Logic
 
         public void Create_Product(Product item)
         {
-            ProductReposit.Create(item);
+            if (item.ProductName.Length < 3 )
+            {
+                throw new Exception("Product name is too short");
+
+            }
         }
 
         public void Delete_Product(int id)
@@ -62,6 +66,13 @@ namespace EQ66L2_HFT_2023241.Logic
 
         public void Create_Manufacturer(Manufacturer item)
         {
+            if (item.ManufacturerName.Length < 2 )
+            {
+                throw new Exception("Manufacturer name is too short ");
+
+            }
+
+
             ManufacturerReposit.Create(item);
         }
 
