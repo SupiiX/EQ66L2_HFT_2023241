@@ -4,6 +4,7 @@ using EQ66L2_HFT_2023241.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 
 namespace EQ66L2_HFT_2023241.Client
 {
@@ -38,10 +39,10 @@ namespace EQ66L2_HFT_2023241.Client
 
             var i = OrderLogic.Query_2().ToList();
 
-
             var I = SupplyLogic.ManufactureProducts().ToList();
 
 
+            
 
 
             

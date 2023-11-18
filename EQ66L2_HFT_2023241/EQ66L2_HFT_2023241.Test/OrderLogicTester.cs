@@ -24,7 +24,6 @@ namespace EQ66L2_HFT_2023241.Test
         {
             mockOrderRepo = new Mock<IOrderRepository>();
 
-
             mockOrderRepo.Setup(x => x.ReadAll()).Returns(new List<Order>()
             {
                 new Order { OrderID = 13, Quantity = 5, OrderDate = new DateTime(2023, 11, 15), CustomerID = 4, ProductID = 7},
@@ -37,6 +36,15 @@ namespace EQ66L2_HFT_2023241.Test
             }.AsQueryable());
 
             Logic = new OrderLogic(mockOrderRepo.Object);
+        }
+
+        [Test]
+        public void CreateCrudMethodTest()
+        {
+            /// act
+            var O = new Order { OrderID = 40, Quantity = 3, OrderDate = new DateTime(2023, 10, 20), CustomerID = 10, ProductID = 5 };
+            // assert
+            mockOrderRepo.Verify(x => x.Create(It.IsAny<Order>()), Times.Once);
 
 
         }

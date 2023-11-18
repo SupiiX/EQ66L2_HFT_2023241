@@ -35,6 +35,11 @@ namespace EQ66L2_HFT_2023241.Logic
                 throw new Exception("Order Date Error");
             
             }
+            if(item.Quantity <=0 )
+            {
+                throw new Exception("You cant order 0 or less product");
+            }
+
 
             orderRepository.Create(item);
         }
