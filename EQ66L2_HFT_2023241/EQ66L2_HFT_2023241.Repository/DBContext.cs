@@ -149,6 +149,7 @@ namespace EQ66L2_HFT_2023241.Repository
             products.Add(new Product { ProductID = 23, Price = 120, ProductName = "BlackBerry Key2", Warranty_year = 1, ManufacturerID = 24 });
             products.Add(new Product { ProductID = 24, Price = 80, ProductName = "Casio G-Shock Watch", Warranty_year = 2, ManufacturerID = 25 });
             products.Add(new Product { ProductID = 25, Price = 150, ProductName = "Pioneer Headphones", Warranty_year = 2, ManufacturerID = 26 });
+            
 
             List<Customer> customers = new List<Customer>();
 
@@ -201,11 +202,12 @@ namespace EQ66L2_HFT_2023241.Repository
             orders.Add(new Order { OrderID = 18, Quantity = 2, OrderDate = new DateTime(2022, 11, 2), CustomerID = customers[3].CustomerID, ProductID = products[18].ProductID });
             orders.Add(new Order { OrderID = 19, Quantity = 1, OrderDate = new DateTime(2022, 11, 3), CustomerID = customers[9].CustomerID, ProductID = products[0].ProductID });
             orders.Add(new Order { OrderID = 20, Quantity = 4, OrderDate = new DateTime(2022, 11, 4), CustomerID = customers[16].CustomerID, ProductID = products[5].ProductID });
-            orders.Add(new Order { OrderID = 21, Quantity = 3, OrderDate = new DateTime(2022, 11, 5), CustomerID = customers[2].CustomerID, ProductID = products[13].ProductID });
+            orders.Add(new Order { OrderID = 21, Quantity = 3, OrderDate = new DateTime(2022, 10, 5), CustomerID = customers[2].CustomerID, ProductID = products[13].ProductID });
             orders.Add(new Order { OrderID = 22, Quantity = 2, OrderDate = new DateTime(2022, 11, 6), CustomerID = customers[15].CustomerID, ProductID = products[21].ProductID });
-            orders.Add(new Order { OrderID = 23, Quantity = 1, OrderDate = new DateTime(2022, 11, 7), CustomerID = customers[18].CustomerID, ProductID = products[3].ProductID });
+            orders.Add(new Order { OrderID = 23, Quantity = 1, OrderDate = new DateTime(2022, 9, 7), CustomerID = customers[18].CustomerID, ProductID = products[3].ProductID });
             orders.Add(new Order { OrderID = 24, Quantity = 3, OrderDate = new DateTime(2022, 11, 8), CustomerID = customers[23].CustomerID, ProductID = products[14].ProductID });
-            orders.Add(new Order { OrderID = 25, Quantity = 4, OrderDate = new DateTime(2022, 11, 9), CustomerID = customers[13].CustomerID, ProductID = products[17].ProductID });
+            orders.Add(new Order { OrderID = 25, Quantity = 4, OrderDate = new DateTime(2022, 8, 9), CustomerID = customers[13].CustomerID, ProductID = products[17].ProductID });
+            orders.Add(new Order { OrderID = 26, Quantity = 3, OrderDate = new DateTime(2022, 11, 2), CustomerID = customers[10].CustomerID, ProductID = products[25].ProductID });
 
 
             modelBuilder.Entity<Manufacturer>().HasData(manufacturers);

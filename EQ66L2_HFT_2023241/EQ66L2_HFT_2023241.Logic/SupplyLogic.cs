@@ -4,6 +4,7 @@ using System.Linq;
 using EQ66L2_HFT_2023241.Logic.Interfaces;
 using EQ66L2_HFT_2023241.Models;
 using EQ66L2_HFT_2023241.Repository;
+using Microsoft.EntityFrameworkCore;
 
 
 namespace EQ66L2_HFT_2023241.Logic
@@ -33,6 +34,14 @@ namespace EQ66L2_HFT_2023241.Logic
                 throw new Exception("Product name is too short");
 
             }
+            if (item.Price <= 0 )
+            {
+                throw new Exception("Price cant be 0 or lower");
+
+            }
+
+
+            ProductReposit.Create(item);
         }
 
         public void Delete_Product(int id)
@@ -72,7 +81,6 @@ namespace EQ66L2_HFT_2023241.Logic
 
             }
 
-
             ManufacturerReposit.Create(item);
         }
 
@@ -104,16 +112,28 @@ namespace EQ66L2_HFT_2023241.Logic
         //////////// Non Crud methods
 
 
-
-
-        public void Query_1(string Country)
+        public IEnumerable<ManufacturesByCountry> Query_1(string Country)
         {
-            // parameteresen megadott orszaágban, kik gyártanak 
+           
 
+            return ManufacturerReposit.ReadAll()
+                
+                .Where(x => x.PlaceOf == Country)
+                 .Select(x => new ManufacturesByCountry
+                 {
 
+                      ManufaturerName = x.ManufacturerName,
+
+                      ProductName = x.Products.Select(x => x.ProductName).First(),
+
+                      Price = x.Products.Select(x => x.Price).First()
+                  });
 
 
         }
+
+
+
 
 
         public IEnumerable<object> ManufactureProducts()
@@ -133,26 +153,14 @@ namespace EQ66L2_HFT_2023241.Logic
         }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    }
+    public class ManufacturesByCountry
+    {
+      public string ManufaturerName;
+       public int Price;
+        public string ProductName;
 
     }
+
+
 }

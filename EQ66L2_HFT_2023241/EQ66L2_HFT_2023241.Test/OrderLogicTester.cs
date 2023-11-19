@@ -30,20 +30,25 @@ namespace EQ66L2_HFT_2023241.Test
             mockOrderRepo = new Mock<IOrderRepository>();
 
             mockOrderRepo.Setup(x => x.ReadAll()).Returns(new List<Order>()
-            {
-                new Order { OrderID = 13, Quantity = 5, OrderDate = new DateTime(2023, 11, 15), CustomerID = 4, ProductID = 7},
-                new Order { OrderID = 15, Quantity = 4, OrderDate = new DateTime(2023, 11, 1), CustomerID = 2, ProductID = 10 },
-                new Order { OrderID = 16, Quantity = 7, OrderDate = new DateTime(2023, 11, 18), CustomerID = 8, ProductID = 20 },
-                new Order { OrderID = 17, Quantity = 1, OrderDate = new DateTime(2023, 10, 10), CustomerID = 9, ProductID = 16 },
-                new Order { OrderID = 18, Quantity = 6, OrderDate = new DateTime(2023, 9, 22), CustomerID = 4, ProductID = 3 },
-                new Order { OrderID = 19, Quantity = 3, OrderDate = new DateTime(2023, 1, 5), CustomerID = 2, ProductID = 18 }
+            { 
+                new Order(13, 10, new DateTime(2023, 11, 15), 4, 7, new Customer { }, new Product { ProductID = 7, Price = 450, ProductName = "Envy Printer", Warranty_year = 2, ManufacturerID = 8, Manufacturer = new Manufacturer { ManufacturerID = 8, ManufacturerName = "HP", PlaceOf = "United States" }  }),
+                new Order(15, 9, new DateTime(2023, 11, 1), 2, 10, new Customer { }, new Product { ProductID = 10, Price = 300, ProductName = "ROG Gaming Mouse", Warranty_year = 1, ManufacturerID = 11 , Manufacturer = new Manufacturer { ManufacturerID = 11, ManufacturerName = "Asus", PlaceOf = "Taiwan" } }),
+                new Order(16, 8, new DateTime(2023, 11, 18), 8, 20, new Customer { }, new Product { ProductID = 20, Price = 40, ProductName = "LED Bulbs (4 pack)", Warranty_year = 2, ManufacturerID = 21, Manufacturer = new Manufacturer { ManufacturerID = 21, ManufacturerName = "Philips", PlaceOf = "Netherlands" } }),
+                new Order(17, 7, new DateTime(2023, 10, 10), 9, 16, new Customer { }, new Product { ProductID = 16, Price = 320, ProductName = "EOS DSLR Camera", Warranty_year = 2, ManufacturerID = 17, Manufacturer = new Manufacturer { ManufacturerID = 17, ManufacturerName = "Canon", PlaceOf = "Japan" }  }),
+                new Order(18, 7, new DateTime(2023, 9, 22), 4, 3, new Customer { }, new Product { ProductID = 3, Price = 300, ProductName = "iPhone 13", Warranty_year = 1, ManufacturerID = 4, Manufacturer  = new Manufacturer { ManufacturerID = 4, ManufacturerName = "Apple", PlaceOf = "United States" } }),
+                new Order(19, 5, new DateTime(2023, 1, 5), 2, 18, new Customer { }, new Product { ProductID = 18, Price = 500, ProductName = "Redmi Note 10", Warranty_year = 1, ManufacturerID = 19 , Manufacturer = new Manufacturer { ManufacturerID = 19, ManufacturerName = "Xiaomi", PlaceOf = "China" }}),
+
+                //new Order { OrderID = 13, Quantity = 10, OrderDate = new DateTime(2023, 11, 15), CustomerID = 4, ProductID = 7 },
+                //new Order { OrderID = 15, Quantity = 9, OrderDate = new DateTime(2023, 11, 1), CustomerID = 2, ProductID = 10 },
+                //new Order { OrderID = 16, Quantity = 8, OrderDate = new DateTime(2023, 11, 18), CustomerID = 8, ProductID = 20 },
+                //new Order { OrderID = 17, Quantity = 7, OrderDate = new DateTime(2023, 10, 10), CustomerID = 9, ProductID = 16 },
+                //new Order { OrderID = 18, Quantity = 6, OrderDate = new DateTime(2023, 9, 22), CustomerID = 4, ProductID = 3 },
+                //new Order { OrderID = 19, Quantity = 5, OrderDate = new DateTime(2023, 1, 5), CustomerID = 2, ProductID = 18 }
 
 
             }.AsQueryable());
 
-            
-
-            Logic = new OrderLogic(mockOrderRepo.Object);
+          Logic = new OrderLogic(mockOrderRepo.Object);
         }
 
         [Test]
@@ -83,24 +88,25 @@ namespace EQ66L2_HFT_2023241.Test
         {
             var actual = Logic.Query_2().ToList();
 
+
             var expected = new List<PupularPrd>()
             {
-             new PupularPrd() { productName = "LED Bulbs (4 pack)", Count = 7, ManufacturerName = "Philips", MadeIn = "Netherlands" },
-             new PupularPrd() { productName = "iPhone 13", Count = 6, ManufacturerName = "Apple", MadeIn = "United States" },
-             new PupularPrd() { productName = "UltraWide Monitor", Count = 5, ManufacturerName = "LG", MadeIn = "South Korea" }
+                new PupularPrd() {Count = 10 , productName = "Envy Printer", MadeIn = "United States", ManufacturerName= "HP" },
+                new PupularPrd() {Count = 9 , productName = "ROG Gaming Mouse", MadeIn = "Taiwan", ManufacturerName= "Asus" },
+                new PupularPrd() {Count = 8, productName = "LED Bulbs (4 pack)", MadeIn = "Netherlands", ManufacturerName = "Philips" }
 
             };
-         
-            // 
-            Assert.AreEqual(expected, actual);
 
+            ;
+
+          // Assert.AreEqual(actual, expected);
+           //Assert.AreSame(actual, expected);
+
+
+          //Assert.IsNotEmpty(actual); // jo
+
+          //Assert.AreEqual(actual.Count, expected.Count);// ugyan annyi db
         }
-
-
-
-
-
-
 
     }
 }

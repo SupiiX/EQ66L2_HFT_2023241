@@ -10,6 +10,9 @@ namespace EQ66L2_HFT_2023241.Models
 {
     public class Order
     {
+        
+
+
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int OrderID { get; set; }
@@ -27,7 +30,21 @@ namespace EQ66L2_HFT_2023241.Models
 
        public virtual Customer Customer { get; private set; }
 
-       public virtual Product Product { get; private set; }    
+       public virtual Product Product { get; private set; }
+
+
+        public Order(int orderID, int quantity, DateTime orderDate, int customerID, int productID, Customer customer, Product product)
+        {
+            OrderID = orderID;
+            Quantity = quantity;
+            OrderDate = orderDate;
+            CustomerID = customerID;
+            ProductID = productID;
+            Customer = customer;
+            Product = product;
+        }
+
+        public Order() { }
 
     }
 }

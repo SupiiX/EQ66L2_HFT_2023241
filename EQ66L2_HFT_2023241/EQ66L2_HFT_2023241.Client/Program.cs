@@ -36,13 +36,14 @@ namespace EQ66L2_HFT_2023241.Client
 
             var i = OrderLogic.Query_2().ToList();
 
+
             var I = SupplyLogic.ManufactureProducts().ToList();
 
+            var Z = SupplyLogic.Query_1("Japan").ToList();
+
+
             ;
-            
 
-
-            
 
         }
              

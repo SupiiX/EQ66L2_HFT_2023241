@@ -95,13 +95,11 @@ namespace EQ66L2_HFT_2023241.Logic
 
                        Count = grop.Sum(x => x.Quantity),
 
-                       ManufacturerName = grop.FirstOrDefault().Product.Manufacturer.ManufacturerName,
+                      ManufacturerName = grop.FirstOrDefault().Product.Manufacturer.ManufacturerName,
 
-                       MadeIn = grop.FirstOrDefault().Product.Manufacturer.PlaceOf
+                      MadeIn = grop.FirstOrDefault().Product.Manufacturer.PlaceOf
 
                    }).Take(3);
-
-
 
         }
 

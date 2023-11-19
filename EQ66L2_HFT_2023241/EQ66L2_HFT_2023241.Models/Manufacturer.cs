@@ -25,5 +25,7 @@ namespace EQ66L2_HFT_2023241.Models
 
         public virtual ICollection<Product> Products { get; set; }
 
+       // public virtual Product Product { get; set; }
+
     }
 }
