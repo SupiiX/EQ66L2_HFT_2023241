@@ -32,14 +32,35 @@ namespace EQ66L2_HFT_2023241.Client
 
             /////////////////////////////////////////////////////////////////
 
-            var Q = OrderLogic.query();
+       
+            try
+            {
+                                                   
 
-            var i = OrderLogic.Query_2().ToList();
+               
+
+                // ezt atirni 
+                var kiscica = SupplyLogic.ManufactureProducts().ToList();
+
+            }
+            catch (Exception ex)
+            {
+                
+                Console.WriteLine(ex.Message);
+            }
+
+            // ok => visszaadja csökkenő sorrendben hogy ki költött a legtöbbet
+            var A = OrderLogic.query();
+
+            // melyik a elso 3 legnépszerübb termék (legtöbbet vásárolt) mennyit vásárolnak belőle-/kik-hol gyartja
+            var B = OrderLogic.Query_2().ToList();
 
 
-            var I = SupplyLogic.ManufactureProducts().ToList();
+            //MelyikOrszagbanGyartjakALegtöbbetvasarolttermeket, termek db, atlagos garancia vallalas
+            var C = OrderLogic.Query3().ToList();
 
-            var Z = SupplyLogic.Query_1("Japan").ToList();
+            ///// ki gyart ott és mit 
+            var D = SupplyLogic.Query_1("Japan").ToList();
 
 
             ;

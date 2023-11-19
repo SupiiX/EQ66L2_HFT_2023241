@@ -76,10 +76,7 @@ namespace EQ66L2_HFT_2023241.Logic
 
         //////////////////////////////////////////////////
         /// Non CRUD
-
-     
-
-
+           
 
         public IEnumerable<PupularPrd> Query_2()
         {
@@ -100,98 +97,45 @@ namespace EQ66L2_HFT_2023241.Logic
                       MadeIn = grop.FirstOrDefault().Product.Manufacturer.PlaceOf
 
                    }).Take(3);
+        }
 
+
+        public IEnumerable<object> query()
+        {
+                       
+            // Először lekérdezzük a rendeléseket és a hozzájuk tartozó vevőket egy listába
+            var orders = orderRepository.ReadAll().Include(x => x.Customer).ToList();
+
+
+            // Majd a listán végzünk csoportosítást és kiválasztást
+            return orders.GroupBy(x => x.CustomerID).Select(x => new
+            {
+                ID = x.Key,
+                Name = x.FirstOrDefault().Customer.CustomerName,  
+                Osszeg = x.Sum(x => x.Product.Price * x.Quantity)
+
+            }).OrderByDescending(x => x.Osszeg);
         }
 
         
-
-
-
-        public IEnumerable<object> MelyikOrszagbanGyartjakALegtöbbetvasarolttermeket()
+        public IEnumerable<object> Query3()
         {
 
-            return orderRepository.ReadAll().
+            return orderRepository.ReadAll().Include(x => x.Product).ToList().
                         GroupBy(x => x.Product.Manufacturer.PlaceOf).
                         OrderByDescending(x => x.Sum(x => x.Quantity)).
                         Select(x => new
                         {
                             Country = x.Key,
                             Quantity = x.Sum(x => x.Quantity),
-                            //Customer = x.Select(x => x.Customer.CustomerName)  // exept
+                            o = x.Average(x => x.Product.Warranty_year)
                         });
-
         }
 
-        /// 
-
-        public IEnumerable<P> KikoltotteALegtobbPenzt()
-        {
-
-            //return orderRepository.ReadAll().GroupBy(x => x.Customer.CustomerID).OrderBy(x => x.Sum(x => x.Quantity))
-            //                .Select(x => new
-            //                {
-            //                    a = x.Key,
-
-            //                    b = x.Select(x => x.Customer.CustomerName).ToString() 
-
-            //                });
-            //
+  
+       
 
 
-            var quer = from order in orderRepository.ReadAll()
-                       group order by order.CustomerID into customerGroup
-                       let totalSpent = customerGroup.Sum(order => order.Product.Price * order.Quantity)
-                       orderby totalSpent descending
-                       select new P
-                       {
-                           Id = customerGroup.Key,
-                           //Name = customerGroup.FirstOrDefault(x => x.Customer?.CustomerName),
-                           Total = totalSpent
-                       };
-
-            return quer.ToList();
-
-        }
-
-        public class P
-        {
-            public int Id { get; set; }
-            public string Name { get; set; }
-            public int Total { get; set; }
-        }
-
-
-        public int Queryyyyyyy()
-        {
-            return orderRepository.ReadAll().Select(x => new
-            {
-                warrant = x.Product.Warranty_year,
-                name = x.Customer.CustomerName,
-                quan = x.Quantity,
-
-            }
-
-
-            ).Max(x => x.quan);
-
-
-        }
-
-        public IEnumerable<object> query()
-        {
-            // Először lekérdezzük a rendeléseket és a hozzájuk tartozó vevőket egy listába
-            var orders = orderRepository.ReadAll().Include(x => x.Customer).ToList();
-            
-
-            // Majd a listán végzünk csoportosítást és kiválasztást
-            return orders.Select(x => x.Customer).GroupBy(x => x.CustomerID).Select(x => new
-            {
-                c = x.Key,
-                a = x.FirstOrDefault().CustomerName,
-            });
-
-
-        }
     }
 
     public class PupularPrd
@@ -200,8 +144,12 @@ namespace EQ66L2_HFT_2023241.Logic
         public int Count;
         public string ManufacturerName;
         public string MadeIn;
-
-
     }
 
+    public class P
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public int Total { get; set; }
+    }
 }

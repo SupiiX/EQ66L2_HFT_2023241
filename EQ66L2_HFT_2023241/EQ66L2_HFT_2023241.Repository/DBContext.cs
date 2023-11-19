@@ -135,7 +135,7 @@ namespace EQ66L2_HFT_2023241.Repository
             products.Add(new Product { ProductID = 9, Price = 1500, ProductName = "Surface Pro 8", Warranty_year = 2, ManufacturerID = 10 });
             products.Add(new Product { ProductID = 10, Price = 300, ProductName = "ROG Gaming Mouse", Warranty_year = 1, ManufacturerID = 11 });
             products.Add(new Product { ProductID = 11, Price = 1200, ProductName = "Lumix Camera", Warranty_year = 2, ManufacturerID = 12 });
-            products.Add(new Product { ProductID = 12, Price = 200, ProductName = "Satellite Laptop", Warranty_year = 1, ManufacturerID = 13 });
+            products.Add(new Product { ProductID = 12, Price = 200, ProductName = "Satellite Laptop", Warranty_year = 3, ManufacturerID = 13 });
             products.Add(new Product { ProductID = 13, Price = 180, ProductName = "Aquos TV", Warranty_year = 3, ManufacturerID = 14 });
             products.Add(new Product { ProductID = 14, Price = 250, ProductName = "ThinkPad", Warranty_year = 2, ManufacturerID = 15 });
             products.Add(new Product { ProductID = 15, Price = 400, ProductName = "Nokia 9", Warranty_year = 1, ManufacturerID = 16 });
@@ -207,7 +207,7 @@ namespace EQ66L2_HFT_2023241.Repository
             orders.Add(new Order { OrderID = 23, Quantity = 1, OrderDate = new DateTime(2022, 9, 7), CustomerID = customers[18].CustomerID, ProductID = products[3].ProductID });
             orders.Add(new Order { OrderID = 24, Quantity = 3, OrderDate = new DateTime(2022, 11, 8), CustomerID = customers[23].CustomerID, ProductID = products[14].ProductID });
             orders.Add(new Order { OrderID = 25, Quantity = 4, OrderDate = new DateTime(2022, 8, 9), CustomerID = customers[13].CustomerID, ProductID = products[17].ProductID });
-            orders.Add(new Order { OrderID = 26, Quantity = 3, OrderDate = new DateTime(2022, 11, 2), CustomerID = customers[10].CustomerID, ProductID = products[25].ProductID });
+            // orders.Add(new Order { OrderID = 26, Quantity = 3, OrderDate = new DateTime(2022, 11, 2), CustomerID = customers[10].CustomerID, ProductID = products[25].ProductID });
 
 
             modelBuilder.Entity<Manufacturer>().HasData(manufacturers);
