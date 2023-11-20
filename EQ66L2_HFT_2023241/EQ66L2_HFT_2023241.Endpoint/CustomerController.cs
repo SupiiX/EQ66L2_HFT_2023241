@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace EQ66L2_HFT_2023241.Endpoint
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class CustomerController : ControllerBase
     {

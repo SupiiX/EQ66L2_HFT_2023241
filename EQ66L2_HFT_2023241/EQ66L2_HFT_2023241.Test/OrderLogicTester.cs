@@ -14,6 +14,7 @@ using System.Xml.Linq;
 using System.Runtime.Intrinsics.X86;
 using Microsoft.EntityFrameworkCore;
 using System.IO;
+using NUnit.Framework.Constraints;
 
 namespace EQ66L2_HFT_2023241.Test
 {
@@ -141,8 +142,9 @@ namespace EQ66L2_HFT_2023241.Test
 
         [Test]
 
-        public void MostMoneySpendTester()
+        public void MostMoneySpendTester() //maybe
         {
+            //Take(1)
             var actual = Logic.MostMoneySpend().ToList();
 
             var expected = new List<MoneySpend>()
@@ -160,32 +162,45 @@ namespace EQ66L2_HFT_2023241.Test
 
 
         [Test]
-         public void PlaceOfPopularPrdTester()
+         public void PlaceOfPopularPrdTester() //
         {
-            var actual = Logic.PlaceOfPopularPrd();
 
+            var actual = Logic.PlaceOfPopularPrd().ToList().Take(3);
 
+            // Assert.IsNotEmpty(actual);
 
+            var expected = new List<CountryMostPopularPrd>()
+                {
+                    new CountryMostPopularPrd() { AverageWarranty = 1.5, Country = "United States", Quantity = 17 },
+                    new CountryMostPopularPrd() { AverageWarranty = 1, Country = "Taiwan", Quantity = 10 },
+                    new CountryMostPopularPrd() { AverageWarranty = 2, Country = "Netherlands", Quantity = 9 }
+                };
+
+            //Assert.That(actual, Is.EquivalentTo(expected));
+
+            Assert.AreEqual(actual.Select(x => x.Country).ToList(), expected.Select(x => x.Country).ToList());
 
         }
 
         [Test]
         public void MonthOrdersTester()
         {
-            var actual = Logic.MonthOrders(11);
+            var actual = Logic.MonthOrders(11).ToList();
+
+
+
 
 
         }
 
         [Test]
-        public void MonthOrder_InvalidTester()
+        public void MonthOrder_InvalidTester() //
         {
 
             var invalidMonth = 13;
 
             Assert.Throws<Exception>(() => Logic.MonthOrders(invalidMonth));
-
-
+         
         }
 
 

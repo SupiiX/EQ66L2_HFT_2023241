@@ -33,9 +33,9 @@ namespace EQ66L2_HFT_2023241.Test
             {
 
                  new Manufacturer { ManufacturerID = 17, ManufacturerName = "LG Electronics", PlaceOf = "South Korea", Products = new List<Product> { new Product { ProductID = 11, Price = 599, ProductName = "LG 4K TV", Warranty_year = 2 } } },
-    new Manufacturer { ManufacturerID = 18, ManufacturerName = "Panasonic", PlaceOf = "Japan", Products = new List<Product> { new Product { ProductID = 12, Price = 499, ProductName = "Panasonic Microwave", Warranty_year = 1 } } },
-    new Manufacturer { ManufacturerID = 19, ManufacturerName = "Dell", PlaceOf = "United States", Products = new List<Product> { new Product { ProductID = 13, Price = 899, ProductName = "Dell Gaming Laptop", Warranty_year = 2 }, new Product { ProductID = 9, Price = 799, ProductName = "Notabook Ultra Laptop", Warranty_year = 2 } } },
-    new Manufacturer { ManufacturerID = 20, ManufacturerName = "Siemens", PlaceOf = "Germany", Products = new List<Product> { new Product { ProductID = 8, Price = 1200, ProductName = "MacBook Air", Warranty_year = 3 }, new Product { ProductID = 10, Price = 299, ProductName = "Nokia Smartphone", Warranty_year = 1 } } },
+                new Manufacturer { ManufacturerID = 18, ManufacturerName = "Panasonic", PlaceOf = "Japan", Products = new List<Product> { new Product { ProductID = 12, Price = 499, ProductName = "Panasonic Microwave", Warranty_year = 1 } } },
+                new Manufacturer { ManufacturerID = 19, ManufacturerName = "Dell", PlaceOf = "United States", Products = new List<Product> { new Product { ProductID = 13, Price = 899, ProductName = "Dell Gaming Laptop", Warranty_year = 2 }, new Product { ProductID = 9, Price = 799, ProductName = "Notabook Ultra Laptop", Warranty_year = 2 } } },
+                new Manufacturer { ManufacturerID = 20, ManufacturerName = "Siemens", PlaceOf = "Germany", Products = new List<Product> { new Product { ProductID = 8, Price = 1200, ProductName = "MacBook Air", Warranty_year = 3 }, new Product { ProductID = 10, Price = 299, ProductName = "Nokia Smartphone", Warranty_year = 1 } } },
 
 
 
@@ -102,7 +102,7 @@ namespace EQ66L2_HFT_2023241.Test
         }
 
 
-        public void ManufactureByCountriesInvalidTester()
+        public void ManufactureByCountriesInvalidTester() //
         {
             var InvalidCountry = "Ger";
 

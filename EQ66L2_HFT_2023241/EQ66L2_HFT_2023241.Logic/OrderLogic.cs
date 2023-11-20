@@ -130,7 +130,7 @@ namespace EQ66L2_HFT_2023241.Logic
                         {
                             Country = x.Key,
                             Quantity = x.Sum(x => x.Quantity),
-                            AvarageWarranty = x.Average(x => x.Product.Warranty_year)
+                            AverageWarranty = x.Average(x => x.Product.Warranty_year)
                         }); // take(1/3)
         }
 
@@ -191,7 +191,7 @@ namespace EQ66L2_HFT_2023241.Logic
     {
         public string Country { get; set; }
         public int Quantity { get; set; }
-        public double AvarageWarranty { get; set; }
+        public double AverageWarranty { get; set; }
     }
 
 
