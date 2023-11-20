@@ -29,6 +29,12 @@ namespace EQ66L2_HFT_2023241.Logic
                 throw new Exception("Name is too short");
 
             }
+            if (!item.Email.Contains('@'))
+            {
+                throw new Exception("Invalid Email");
+
+            }
+
 
             CustomerRepository.Create(item);
         }

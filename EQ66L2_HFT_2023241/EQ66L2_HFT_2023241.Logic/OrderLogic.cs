@@ -4,6 +4,7 @@ using EQ66L2_HFT_2023241.Repository;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -102,7 +103,9 @@ namespace EQ66L2_HFT_2023241.Logic
 
         public IEnumerable<MoneySpend> MostMoneySpend()
         {
-                       
+                         
+            // Who spent the most money
+
             // Először lekérdezzük a rendeléseket és a hozzájuk tartozó vevőket egy listába
             var orders = orderRepository.ReadAll().Include(x => x.Customer).ToList();
 
@@ -110,10 +113,10 @@ namespace EQ66L2_HFT_2023241.Logic
             return orders.GroupBy(x => x.CustomerID).Select(x => new MoneySpend
             {
                 Id = x.Key,
-                Name = x.FirstOrDefault().Customer.CustomerName,  
+                Name = x.FirstOrDefault().Customer.CustomerName,
                 Amount = x.Sum(x => x.Product.Price * x.Quantity)
 
-            }).OrderByDescending(x => x.Amount);
+            }).OrderByDescending(x => x.Amount).Take(1);
         }
 
         
@@ -128,34 +131,40 @@ namespace EQ66L2_HFT_2023241.Logic
                             Country = x.Key,
                             Quantity = x.Sum(x => x.Quantity),
                             AvarageWarranty = x.Average(x => x.Product.Warranty_year)
-                        });
+                        }); // take(1/3)
         }
 
 
         public IEnumerable<DateOrders> MonthOrders(int Month)
         {
-            // kapunk parameterkent egy datetimot(honapot ) 
-            // mit / mikor /  ki rendelt az adott hónapban 
-                      
-            // vagy orderby date  
+            if ( Month >= 13 || Month <= 0)
+            {
+                throw new Exception("Month error ");
+
+            }
+            else
+            {
+
+                return orderRepository.ReadAll()
+                                      .Where(x => x.OrderDate.Month == Month)
+                                      .Select(x => new DateOrders
+                                      {
+
+                                          Product = x.Product.ProductName,
+
+                                          When = x.OrderDate,
+
+                                          Customer = x.Customer.CustomerName,
 
 
-            return orderRepository.ReadAll()
-                                  .Where(x => x.OrderDate.Month == Month)
-                                  .Select(x => new DateOrders
-                                  {
+                                      }).OrderBy(x => x.When);
 
-                                      Product = x.Product.ProductName,
-
-                                      When = x.OrderDate,
-
-                                      Customer = x.Customer.CustomerName,
+            }
+        }
 
 
-                                  }).OrderBy(x => x.When);
 
         }
-    }
 
     public class DateOrders
     {

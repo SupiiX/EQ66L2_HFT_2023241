@@ -13,6 +13,7 @@ using System.Drawing;
 using System.Xml.Linq;
 using System.Runtime.Intrinsics.X86;
 using Microsoft.EntityFrameworkCore;
+using System.IO;
 
 namespace EQ66L2_HFT_2023241.Test
 {
@@ -60,7 +61,7 @@ namespace EQ66L2_HFT_2023241.Test
                                                                     new Product { ProductID = 3, Price = 300, ProductName = "iPhone 13", Warranty_year = 1, ManufacturerID = 4, Manufacturer = 
                                                                     new Manufacturer { ManufacturerID = 4, ManufacturerName = "Apple", PlaceOf = "United States" } }),
 
-                new Order(19, 5, new DateTime(2023, 1, 5), 2, 18, new Customer { CustomerID = 8, CustomerName = "Zsuzsa", Email = "zsuzsa@example.com" }, 
+                new Order(19, 5, new DateTime(2023, 11, 5), 2, 18, new Customer { CustomerID = 8, CustomerName = "Zsuzsa", Email = "zsuzsa@example.com" }, 
                                                                     new Product { ProductID = 18, Price = 500, ProductName = "Redmi Note 10", Warranty_year = 1, ManufacturerID = 19 , Manufacturer = 
                                                                     new Manufacturer { ManufacturerID = 19, ManufacturerName = "Xiaomi", PlaceOf = "China" }}),
 
@@ -129,12 +130,12 @@ namespace EQ66L2_HFT_2023241.Test
             };
                        
 
-          // Assert.AreEqual(actual, expected);
-          //Assert.AreSame(actual, expected);
+                    //  Assert.AreEqual(actual, expected);
+            //Assert.AreSame(actual, expected);
 
-          //Assert.IsNotEmpty(actual); // jo
-
-          //Assert.AreEqual(actual.Count, expected.Count);// ugyan annyi db
+            //Assert.IsNotEmpty(actual); // jo
+            
+          Assert.AreEqual(actual.Count, expected.Count);// ugyan annyi db
         }
 
 
@@ -146,12 +147,47 @@ namespace EQ66L2_HFT_2023241.Test
 
             var expected = new List<MoneySpend>()
             {
-
+                new MoneySpend() {Name = "Gergő", Id= 2, Amount = 5500 }
 
             };
 
 
+            Assert.IsNotEmpty(actual);
+
+            //Assert.Equals(actual, expected);  
+
         }
+
+
+        [Test]
+         public void PlaceOfPopularPrdTester()
+        {
+            var actual = Logic.PlaceOfPopularPrd();
+
+
+
+
+        }
+
+        [Test]
+        public void MonthOrdersTester()
+        {
+            var actual = Logic.MonthOrders(11);
+
+
+        }
+
+        [Test]
+        public void MonthOrder_InvalidTester()
+        {
+
+            var invalidMonth = 13;
+
+            Assert.Throws<Exception>(() => Logic.MonthOrders(invalidMonth));
+
+
+        }
+
 
 
 

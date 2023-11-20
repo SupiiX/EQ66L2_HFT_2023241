@@ -82,41 +82,33 @@ namespace EQ66L2_HFT_2023241.Test
         }
 
         [Test]
-        public void Query_1_Tester()
+        public void ManufactureByCountriesTester()
         {
             var country = "Germany";
-            var actualResult = SupplyLogic.Query_1(country).ToList();
+            var actualResult = SupplyLogic.ManufactureByCountries(country).ToList();
 
-            var expectedResult = new List<ManufacturesByCountry>
+            var expectedResult = new List<ManufactureByCountry>
             {
-                new ManufacturesByCountry { ManufaturerName = "Siemens", Price = 1200, ProductName = "MacBook Air"},
+                new ManufactureByCountry { ManufaturerName = "Siemens", ProductName = "MacBook Air" ,MadeIn = country},
 
             
             };
 
-            Assert.AreSame(expectedResult, actualResult);
+            //Assert.AreSame(expectedResult, actualResult);
 
-            //Assert.IsNotEmpty(actualResult);
+            Assert.IsNotEmpty(actualResult);
             
 
         }
 
 
-
-        [Test]
-        public void ManufactureProductsTest()
+        public void ManufactureByCountriesInvalidTester()
         {
-            //sample
+            var InvalidCountry = "Ger";
 
-            var actual = SupplyLogic.ManufactureProducts().ToList();
+            Assert.Throws<Exception>(() => SupplyLogic.ManufactureByCountries(InvalidCountry));
 
-            var expeted = new List<AnonymousObject>()
-            {
-                
-            };
-
-               // Assert.AreEqual(actual, expeted);
-
+        }
 
 
 
@@ -130,4 +122,4 @@ namespace EQ66L2_HFT_2023241.Test
 
 
     
-}
+

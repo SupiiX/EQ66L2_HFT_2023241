@@ -114,7 +114,16 @@ namespace EQ66L2_HFT_2023241.Logic
 
         public IEnumerable<ManufactureByCountry> ManufactureByCountries(string Country)
         {
+
             /// ki gyart ott és mit 
+
+
+            if (Country.Length < 3)
+            {
+
+                throw new Exception("County name error");
+            }
+
 
             return ProductReposit.ReadAll().Include(x => x.Manufacturer)
                 .Select(x => new ManufactureByCountry
