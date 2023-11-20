@@ -50,17 +50,19 @@ namespace EQ66L2_HFT_2023241.Client
             }
 
             // ok => visszaadja csökkenő sorrendben hogy ki költött a legtöbbet
-            var A = OrderLogic.query();
+            var A = OrderLogic.MostMoneySpend().ToList();
 
             // melyik a elso 3 legnépszerübb termék (legtöbbet vásárolt) mennyit vásárolnak belőle-/kik-hol gyartja
-            var B = OrderLogic.Query_2().ToList();
+            var B = OrderLogic.MostPopularPrd().ToList();
 
 
             //MelyikOrszagbanGyartjakALegtöbbetvasarolttermeket, termek db, atlagos garancia vallalas
-            var C = OrderLogic.Query3().ToList();
+            var C = OrderLogic.PlaceOfPopularPrd().ToList();
 
             ///// ki gyart ott és mit 
-            var D = SupplyLogic.Query_1("Japan").ToList();
+            var D = SupplyLogic.ManufactureByCountries("Japan").ToList();
+
+            var E = OrderLogic.MonthOrders(10).ToList();
 
 
             ;

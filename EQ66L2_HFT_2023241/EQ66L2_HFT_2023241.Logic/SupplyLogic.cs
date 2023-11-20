@@ -112,21 +112,21 @@ namespace EQ66L2_HFT_2023241.Logic
         //////////// Non Crud methods
 
 
-        public IEnumerable<object> Query_1(string Country)
+        public IEnumerable<ManufactureByCountry> ManufactureByCountries(string Country)
         {
             /// ki gyart ott és mit 
 
             return ProductReposit.ReadAll().Include(x => x.Manufacturer)
-                .Select(x => new
+                .Select(x => new ManufactureByCountry
                 {
-                    ManName = x.Manufacturer.ManufacturerName,
+                    ManufaturerName = x.Manufacturer.ManufacturerName,
 
-                    prod = x.ProductName,
+                    ProductName = x.ProductName,
 
-                    madein = x.Manufacturer.PlaceOf
+                    MadeIn = x.Manufacturer.PlaceOf
                         
 
-                }).Where(x => x.madein == Country);
+                }).Where(x => x.MadeIn == Country);
 
         }
 
@@ -149,10 +149,10 @@ namespace EQ66L2_HFT_2023241.Logic
 
 
     }
-    public class ManufacturesByCountry
+    public class ManufactureByCountry
     {
       public string ManufaturerName;
-       public int Price;
+        public string MadeIn;
         public string ProductName;
 
     }

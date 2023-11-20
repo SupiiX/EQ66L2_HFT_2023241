@@ -78,7 +78,7 @@ namespace EQ66L2_HFT_2023241.Logic
         /// Non CRUD
            
 
-        public IEnumerable<PupularPrd> Query_2()
+        public IEnumerable<PupularPrd> MostPopularPrd()
         {
             // melyik a elso 3 legnépszerübb termék (legtöbbet vásárolt) mennyit vásárolnak belőle-/kik-hol gyartja  
 
@@ -100,44 +100,77 @@ namespace EQ66L2_HFT_2023241.Logic
         }
 
 
-        public IEnumerable<object> query()
+        public IEnumerable<MoneySpend> MostMoneySpend()
         {
                        
             // Először lekérdezzük a rendeléseket és a hozzájuk tartozó vevőket egy listába
             var orders = orderRepository.ReadAll().Include(x => x.Customer).ToList();
 
-
             // Majd a listán végzünk csoportosítást és kiválasztást
-            return orders.GroupBy(x => x.CustomerID).Select(x => new
+            return orders.GroupBy(x => x.CustomerID).Select(x => new MoneySpend
             {
-                ID = x.Key,
+                Id = x.Key,
                 Name = x.FirstOrDefault().Customer.CustomerName,  
-                Osszeg = x.Sum(x => x.Product.Price * x.Quantity)
+                Amount = x.Sum(x => x.Product.Price * x.Quantity)
 
-            }).OrderByDescending(x => x.Osszeg);
+            }).OrderByDescending(x => x.Amount);
         }
 
         
-        public IEnumerable<object> Query3()
+        public IEnumerable<CountryMostPopularPrd> PlaceOfPopularPrd()
         {
 
             return orderRepository.ReadAll().Include(x => x.Product).ToList().
                         GroupBy(x => x.Product.Manufacturer.PlaceOf).
                         OrderByDescending(x => x.Sum(x => x.Quantity)).
-                        Select(x => new
+                        Select(x => new CountryMostPopularPrd
                         {
                             Country = x.Key,
                             Quantity = x.Sum(x => x.Quantity),
-                            o = x.Average(x => x.Product.Warranty_year)
+                            AvarageWarranty = x.Average(x => x.Product.Warranty_year)
                         });
         }
 
-  
-       
+
+        public IEnumerable<DateOrders> MonthOrders(int Month)
+        {
+            // kapunk parameterkent egy datetimot(honapot ) 
+            // mit / mikor /  ki rendelt az adott hónapban 
+                      
+            // vagy orderby date  
 
 
+            return orderRepository.ReadAll()
+                                  .Where(x => x.OrderDate.Month == Month)
+                                  .Select(x => new DateOrders
+                                  {
+
+                                      Product = x.Product.ProductName,
+
+                                      When = x.OrderDate,
+
+                                      Customer = x.Customer.CustomerName,
+
+
+                                  }).OrderBy(x => x.When);
+
+        }
     }
 
+    public class DateOrders
+    {
+        public string Product;
+        public DateTime When;
+        public string Customer;
+
+    }
+    public class MoneySpend
+    {
+        public int Id;
+        public string Name;
+        public int Amount;
+
+    }
     public class PupularPrd
     {
         public string productName;
@@ -145,11 +178,12 @@ namespace EQ66L2_HFT_2023241.Logic
         public string ManufacturerName;
         public string MadeIn;
     }
-
-    public class P
+    public class CountryMostPopularPrd
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public int Total { get; set; }
+        public string Country { get; set; }
+        public int Quantity { get; set; }
+        public double AvarageWarranty { get; set; }
     }
+
+
 }
