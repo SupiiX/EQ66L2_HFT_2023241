@@ -1,11 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "CC+0uPfUsc7XSRqOsvBLpIXu6XcLLTnmEsF+uJ0sHP/wBlhiUU+UbIUTwux0nDF8XwCeXaaFbD2jePt0Y7WnSw==",
+  "dgSpecHash": "lzIzTIx2fP/piVgZLvWMGbjAqp8YoSBwNTAzCNVkAtG5W39n07w43i39ZqUtHcJWIzCDxHrdk4GJ97CJNymXHg==",
   "success": true,
   "projectFilePath": "G:\\X-proj\\EQ66L2_HFT_2023241\\EQ66L2_HFT_2023241.Client\\EQ66L2_HFT_2023241.Client.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Supw2\\.nuget\\packages\\castle.core\\4.4.1\\castle.core.4.4.1.nupkg.sha512",
+    "C:\\Users\\Supw2\\.nuget\\packages\\consolemenu-simple\\2.6.1\\consolemenu-simple.2.6.1.nupkg.sha512",
     "C:\\Users\\Supw2\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
+    "C:\\Users\\Supw2\\.nuget\\packages\\microsoft.aspnet.webapi.client\\5.2.7\\microsoft.aspnet.webapi.client.5.2.7.nupkg.sha512",
     "C:\\Users\\Supw2\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\Supw2\\.nuget\\packages\\microsoft.data.sqlclient\\2.0.1\\microsoft.data.sqlclient.2.0.1.nupkg.sha512",
     "C:\\Users\\Supw2\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\2.0.1\\microsoft.data.sqlclient.sni.runtime.2.0.1.nupkg.sha512",
@@ -40,6 +42,7 @@
     "C:\\Users\\Supw2\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
     "C:\\Users\\Supw2\\.nuget\\packages\\netstandard.library\\1.6.1\\netstandard.library.1.6.1.nupkg.sha512",
     "C:\\Users\\Supw2\\.nuget\\packages\\newtonsoft.json\\10.0.1\\newtonsoft.json.10.0.1.nupkg.sha512",
+    "C:\\Users\\Supw2\\.nuget\\packages\\newtonsoft.json.bson\\1.0.1\\newtonsoft.json.bson.1.0.1.nupkg.sha512",
     "C:\\Users\\Supw2\\.nuget\\packages\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "C:\\Users\\Supw2\\.nuget\\packages\\runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "C:\\Users\\Supw2\\.nuget\\packages\\runtime.fedora.24-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.fedora.24-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",

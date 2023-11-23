@@ -15,6 +15,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using static EQ66L2_HFT_2023241.Repository.DBContext;
 
 namespace EQ66L2_HFT_2023241.Endpoint
 {
@@ -31,6 +33,13 @@ namespace EQ66L2_HFT_2023241.Endpoint
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<DbContext>(options =>
+            {
+                options.UseInMemoryDatabase("data");
+            });
+
+            //services.AddTransient<DbContext>();
+
             services.AddTransient<IOrderRepository, OrderRepository>();
             services.AddTransient<ICustomerRepository, CustomerRepository>();
             services.AddTransient<IManufacturerRepository, ManufacturerRepository>();
@@ -45,9 +54,6 @@ namespace EQ66L2_HFT_2023241.Endpoint
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Shop", Version = "v1" });
             });
-
-
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

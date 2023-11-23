@@ -12,5 +12,6 @@ namespace EQ66L2_HFT_2023241.Repository
    // void UpdateProduct(Product product);
         
     void ChangeManufacturer(int id, int NewManufacturerId);
+
     }
 }

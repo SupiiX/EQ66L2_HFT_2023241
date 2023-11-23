@@ -1,5 +1,6 @@
 ﻿using EQ66L2_HFT_2023241.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,11 +29,13 @@ namespace EQ66L2_HFT_2023241.Repository
             base.OnConfiguring(optionsBuilder);
 
 
-            //optionsBuilder.UseSqlServer("");
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseLazyLoadingProxies().UseInMemoryDatabase("data");
+              
+            }
 
-            optionsBuilder.UseInMemoryDatabase("data").UseLazyLoadingProxies();
-
-            //
+          
         }
 
 
@@ -46,19 +49,19 @@ namespace EQ66L2_HFT_2023241.Repository
                 .HasMany(x => x.Products)
                 .WithOne(x => x.Manufacturer)
                 .HasForeignKey(x => x.ProductID)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<Order>()
                 .HasOne( x => x.Product)
                 .WithMany(x => x.Orders)
                 .HasForeignKey(x => x.ProductID)
-                .OnDelete(DeleteBehavior.ClientSetNull);
+                .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<Order>()
                 .HasOne(x => x.Customer)
                 .WithMany(x => x.Orders)
                 .HasForeignKey(x => x.CustomerID)
-                .OnDelete(DeleteBehavior.ClientSetNull);
+                .OnDelete(DeleteBehavior.Cascade);
 
 
 
@@ -216,12 +219,10 @@ namespace EQ66L2_HFT_2023241.Repository
             modelBuilder.Entity<Customer>().HasData(customers);
 
             modelBuilder.Entity<Order>().HasData(orders);
-
-
-
-
         }
 
+
+      
 
     }
 }
