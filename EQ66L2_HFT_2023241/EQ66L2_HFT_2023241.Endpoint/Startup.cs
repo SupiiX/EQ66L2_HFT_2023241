@@ -48,7 +48,10 @@ namespace EQ66L2_HFT_2023241.Endpoint
             services.AddTransient<IOrderLogic, OrderLogic>();
             services.AddTransient<ISupplyLogic, SupplyLogic>();
             services.AddTransient<ICustomerLogic, CustomerLogic>();
-                                    
+
+            services.AddTransient<DbContext, DBContext>();
+            services.AddTransient<DBContext, DBContext>();
+
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
