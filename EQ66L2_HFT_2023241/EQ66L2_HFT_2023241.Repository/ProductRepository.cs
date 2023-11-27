@@ -24,10 +24,10 @@ namespace EQ66L2_HFT_2023241.Repository
                 dbContext.SaveChanges();
 
             }
-            else
-            {
-                throw new Exception("Error ID not found");
-            }
+            //else
+            //{
+            //    throw new Exception("Error ID not found");
+            //}
         }
 
         public void UpdateProduct(Product product)
