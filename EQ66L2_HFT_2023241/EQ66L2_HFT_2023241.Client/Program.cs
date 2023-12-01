@@ -223,11 +223,9 @@ namespace EQ66L2_HFT_2023241.Client
           }
 
 
-
-
        public static void Main(string[] args)
         {
-            rest = new RestService("http://localhost:53910/", "movie");
+            rest = new RestService("http://localhost:53910/", "shop");
 
             var customerSubMenu = new ConsoleMenu(args, level: 1)
                 .Add("List", () => List("Customer"))
