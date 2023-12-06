@@ -154,7 +154,9 @@ namespace EQ66L2_HFT_2023241.Test
             };
 
 
-            Assert.IsNotEmpty(actual);
+            Assert.AreEqual(actual.Select(x => x.Id), expected.Select(x => x.Id));
+
+           // Assert.IsNotEmpty(actual);
 
             //Assert.Equals(actual, expected);  
 
@@ -187,9 +189,9 @@ namespace EQ66L2_HFT_2023241.Test
         {
             var actual = Logic.MonthOrders(11).ToList();
 
+            var count = 4;
 
-
-
+            Assert.That(actual.Count, Is.EqualTo(count));
 
         }
 

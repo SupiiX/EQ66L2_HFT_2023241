@@ -1,7 +1,7 @@
 ﻿using ConsoleTools;
-using EQ66L2_HFT_2023241.Logic;
+//using EQ66L2_HFT_2023241.Logic;
 using EQ66L2_HFT_2023241.Models;
-using EQ66L2_HFT_2023241.Repository;
+//using EQ66L2_HFT_2023241.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +14,6 @@ namespace EQ66L2_HFT_2023241.Client
     {
 
         //DBContext db = new DBContext();
-
         ////test datafill
         ////var a = db.Products.ToArray();
         ////var b = db.Manufacturers.ToArray();
@@ -29,23 +28,15 @@ namespace EQ66L2_HFT_2023241.Client
         //var SupplyLogic = new SupplyLogic(productRepository, manufacturerRepository);
         //var OrderLogic = new OrderLogic(orderRepository);
         //var CustomerLogic = new CustomerLogic(customerRepository);
-
-        ///////////////////////////////////////////////////////////////////
-
-
+       ///////////////////////////////////////////////////////////////////
         //// ok => visszaadja csökkenő sorrendben hogy ki költött a legtöbbet
         //var A = OrderLogic.MostMoneySpend().ToList();
-
         //// melyik a elso 3 legnépszerübb termék (legtöbbet vásárolt) mennyit vásárolnak belőle-/kik-hol gyartja
         //var B = OrderLogic.MostPopularPrd().ToList();
-
-
         ////MelyikOrszagbanGyartjakALegtöbbetvasarolttermeket, termek db, atlagos garancia vallalas
         //var C = OrderLogic.PlaceOfPopularPrd().ToList();
-
         /////// ki gyart ott és mit 
         //var D = SupplyLogic.ManufactureByCountries("Japan").ToList();
-
         //var E = OrderLogic.MonthOrders(10).ToList();
 
         static RestService rest;
@@ -225,7 +216,7 @@ namespace EQ66L2_HFT_2023241.Client
 
        public static void Main(string[] args)
         {
-            rest = new RestService("http://localhost:53910/", "shop");
+            rest = new RestService("http://localhost:35372/", "shop");
 
             var customerSubMenu = new ConsoleMenu(args, level: 1)
                 .Add("List", () => List("Customer"))

@@ -12,5 +12,9 @@ namespace EQ66L2_HFT_2023241.Logic.Interfaces
         Order Read(int id);
         IEnumerable<Order> ReadAll();
         void Update(Order value);
+        IEnumerable<PupularPrd> MostPopularPrd();
+        IEnumerable<MoneySpend> MostMoneySpend();
+        IEnumerable<CountryMostPopularPrd> PlaceOfPopularPrd();
+        IEnumerable<DateOrders> MonthOrders(int Month);
     }
 }
