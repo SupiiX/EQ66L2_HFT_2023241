@@ -62,7 +62,7 @@ namespace EQ66L2_HFT_2023241.Test
           }
 
         [Test]
-        public void Create_Product_Correcto()
+        public void Create_Product_Correct()
         {
             var Product = new Product() { ProductName = "CocaCola", Price = 500};
 
@@ -94,7 +94,7 @@ namespace EQ66L2_HFT_2023241.Test
             
             };
 
-            //Assert.AreSame(expectedResult, actualResult);
+           // Assert.AreEqual(expectedResult, actualResult);
 
             Assert.IsNotEmpty(actualResult);
             

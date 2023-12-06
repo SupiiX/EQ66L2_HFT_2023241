@@ -183,7 +183,7 @@ namespace EQ66L2_HFT_2023241.Client
                 rest1.Put(one, "order");
             }
 
-
+            
 
         }
         static void Delete(string entity)
@@ -224,6 +224,10 @@ namespace EQ66L2_HFT_2023241.Client
             rest1 = new RestService("http://localhost:35372/", "Order");
             rest2 = new RestService("http://localhost:35372/", "SupplyManuf");
             rest3 = new RestService("http://localhost:35372/", "SupplyProd");
+
+
+            //var q = rest.Get<string>(1,"customer/MostPopularPrd");
+            //Console.WriteLine(q);
 
             var customerSubMenu = new ConsoleMenu(args, level: 1)
                 .Add("List", () => List("Customer"))

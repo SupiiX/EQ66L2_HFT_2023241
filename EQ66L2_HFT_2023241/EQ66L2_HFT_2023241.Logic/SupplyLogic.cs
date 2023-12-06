@@ -141,7 +141,7 @@ namespace EQ66L2_HFT_2023241.Logic
 
 
         ///gyakorlo metodus
-
+                        // personal usage 
         public IEnumerable<object> ManufactureProducts()
         {
 
