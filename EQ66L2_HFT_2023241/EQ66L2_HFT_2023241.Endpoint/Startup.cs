@@ -53,15 +53,10 @@ namespace EQ66L2_HFT_2023241.Endpoint
             services.AddTransient<DBContext, DBContext>();
 
             services.AddControllers();
-            //services.AddSwaggerGen(c =>
-            //{
-            //    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Webapp", Version = "v1" });
-            //});
-
-
+           
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebApplication1", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "EQ66L2_HFT_2023241.Endpoint", Version = "v1" });
             });
 
 
@@ -77,7 +72,7 @@ namespace EQ66L2_HFT_2023241.Endpoint
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebApplication1 v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "EQ66L2_HFT_2023241.Endpoint v1"));
             }
 
             app.UseExceptionHandler(c => c.Run(async context =>

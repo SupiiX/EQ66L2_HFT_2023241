@@ -40,6 +40,9 @@ namespace EQ66L2_HFT_2023241.Client
         //var E = OrderLogic.MonthOrders(10).ToList();
 
         static RestService rest;
+        static RestService rest1;
+        static RestService rest2;
+        static RestService rest3;
 
         static void Create(string entity)
         {
@@ -58,7 +61,7 @@ namespace EQ66L2_HFT_2023241.Client
                 string name = Console.ReadLine();
                 Console.Write("Enter Product price: ");
                 int price = int.Parse(Console.ReadLine());
-                rest.Post(new Product() { ProductName = name, Price = price  }, "product");
+                rest3.Post(new Product() { ProductName = name, Price = price  }, "product");
             }
 
 
@@ -68,7 +71,7 @@ namespace EQ66L2_HFT_2023241.Client
                 string name = Console.ReadLine();
                 Console.Write("Enter the place of manufacture");
                 string placeof = Console.ReadLine();
-                rest.Post(new Manufacturer() { ManufacturerName = name, PlaceOf = placeof  }, "manufacturer");
+                rest2.Post(new Manufacturer() { ManufacturerName = name, PlaceOf = placeof  }, "manufacturer");
             }
 
             if (entity == "Order")
@@ -77,7 +80,7 @@ namespace EQ66L2_HFT_2023241.Client
                 int quantity = int.Parse(Console.ReadLine());
                 Console.Write("Enter Order Date");
                 DateTime Time = DateTime.Parse(Console.ReadLine());
-                rest.Post(new Order() { Quantity = quantity, OrderDate = Time }, "order");
+                rest1.Post(new Order() { Quantity = quantity, OrderDate = Time }, "order");
             }
 
         }
@@ -96,10 +99,11 @@ namespace EQ66L2_HFT_2023241.Client
 
             if (entity == "Product")
             {
-                List<Product> products = rest.Get<Product>("product");
+                List<Product> products = rest3.Get<Product>("product");
                 foreach (var item in products)
                 {
                     Console.WriteLine(item.ProductID + ": " + item.ProductName);
+                    
                 }
             }
             Console.ReadLine();
@@ -107,7 +111,7 @@ namespace EQ66L2_HFT_2023241.Client
 
             if (entity == "Manufacturer")
             {
-                List<Manufacturer> manufacturers = rest.Get<Manufacturer>("manufacturer");
+                List<Manufacturer> manufacturers = rest2.Get<Manufacturer>("manufacturer");
                 foreach (var item in manufacturers)
                 {
                     Console.WriteLine(item.ManufacturerID + ": " + item.ManufacturerName);
@@ -118,7 +122,7 @@ namespace EQ66L2_HFT_2023241.Client
 
             if (entity == "Order")
             {
-                List<Order> orders = rest.Get<Order>("order");
+                List<Order> orders = rest1.Get<Order>("order");
                 foreach (var item in orders)
                 {
                     Console.WriteLine(item.OrderID + ": " + item.Quantity + ": " + item.OrderDate );
@@ -146,11 +150,11 @@ namespace EQ66L2_HFT_2023241.Client
             {
                 Console.Write("Enter Product's id to update: ");
                 int id = int.Parse(Console.ReadLine());
-                Product one = rest.Get<Product>(id, "product");
+                Product one = rest3.Get<Product>(id, "product");
                 Console.Write($"New name [old: {one.ProductName}]: ");
                 string name = Console.ReadLine();
                 one.ProductName = name;
-                rest.Put(one, "product");
+                rest3.Put(one, "product");
             }
 
 
@@ -158,25 +162,25 @@ namespace EQ66L2_HFT_2023241.Client
             {
                 Console.Write("Enter Manufacturer's id to update: ");
                 int id = int.Parse(Console.ReadLine());
-                Manufacturer one = rest.Get<Manufacturer>(id, "manufacturer");
+                Manufacturer one = rest2.Get<Manufacturer>(id, "manufacturer");
                 Console.Write($"New name [old: {one.ManufacturerName}]: ");
                 string name = Console.ReadLine();
                 one.ManufacturerName = name;
-                rest.Put(one, "manufacturer");
+                rest2.Put(one, "manufacturer");
             }
 
             if (entity == "Order")
             {
                 Console.Write("Enter Order id to update: ");
                 int id = int.Parse(Console.ReadLine());
-                Order one = rest.Get<Order>(id, "order");
+                Order one = rest2.Get<Order>(id, "order");
                 Console.Write($"New quantity - OrderDate [old: {one.Quantity} - {one.OrderDate}]: ");
                 int quantity = int.Parse(Console.ReadLine());
                 one.Quantity = quantity;
                 DateTime OrderDate = DateTime.Parse(Console.ReadLine());
                 one.OrderDate = OrderDate;
 
-                rest.Put(one, "order");
+                rest1.Put(one, "order");
             }
 
 
@@ -195,28 +199,31 @@ namespace EQ66L2_HFT_2023241.Client
             {
                 Console.Write("Enter Product's id to delete: ");
                 int id = int.Parse(Console.ReadLine());
-                rest.Delete(id, "product");
+                rest3.Delete(id, "product");
             }
 
             if (entity == "Manufacturer")
             {
                 Console.Write("Enter Manufacturer's id to delete: ");
                 int id = int.Parse(Console.ReadLine());
-                rest.Delete(id, "manufacturer");
+                rest2.Delete(id, "manufacturer");
             }
 
             if (entity == "Order")
             {
                 Console.Write("Enter Order id to delete: ");
                 int id = int.Parse(Console.ReadLine());
-                rest.Delete(id, "order");
+                rest1.Delete(id, "order");
             }
           }
 
 
        public static void Main(string[] args)
         {
-            rest = new RestService("http://localhost:35372/", "shop");
+            rest = new RestService("http://localhost:35372/", "Customer");
+            rest1 = new RestService("http://localhost:35372/", "Order");
+            rest2 = new RestService("http://localhost:35372/", "SupplyManuf");
+            rest3 = new RestService("http://localhost:35372/", "SupplyProd");
 
             var customerSubMenu = new ConsoleMenu(args, level: 1)
                 .Add("List", () => List("Customer"))
