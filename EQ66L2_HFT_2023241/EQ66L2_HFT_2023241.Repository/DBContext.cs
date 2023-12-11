@@ -10,6 +10,12 @@ using System.Threading.Tasks;
 namespace EQ66L2_HFT_2023241.Repository
 {
     public class DBContext : DbContext
+
+
+        ////// 
+
+
+
     {
         public virtual DbSet<Customer> Customers { get; set; }
 
