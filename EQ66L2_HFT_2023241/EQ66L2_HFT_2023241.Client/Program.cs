@@ -20,10 +20,10 @@ namespace EQ66L2_HFT_2023241.Client
         {
             if (entity == "Customer")
             {
-                Console.Write("Enter Customer Name:");
+                Console.Write("Enter Customer Name (min 3 char):");
                 string name = Console.ReadLine();
 
-                Console.Write("Enter Customer Email addres: ");
+                Console.Write("Enter Customer Email addres (dont forget @ symbol!): ");
                 string email = Console.ReadLine();
 
                 try
@@ -66,7 +66,7 @@ namespace EQ66L2_HFT_2023241.Client
 
             if (entity == "Manufacturer")
             {
-                Console.Write("Enter Manufacturer Name: ");
+                Console.Write("Enter Manufacturer Name(min 2 char): ");
                 string name = Console.ReadLine();
 
                 Console.Write("Enter the place of manufacture: ");
@@ -180,8 +180,17 @@ namespace EQ66L2_HFT_2023241.Client
                 
                 one.CustomerName = name;
                 one.Email = email;
-                
-                rest.Put(one, "customer");
+                                            
+
+                try
+                {
+                    rest.Put(one, "customer");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+
             }
 
             if (entity == "Product")
@@ -208,8 +217,16 @@ namespace EQ66L2_HFT_2023241.Client
                 one.Warranty_year = warr;
                 one.Price = price;
                 one.ManufacturerID = Manuf;
+                              
 
-                rest.Put(one, "product");
+                try
+                {
+                    rest.Put(one, "product");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
             }
 
 
@@ -228,8 +245,16 @@ namespace EQ66L2_HFT_2023241.Client
 
                 one.ManufacturerName = name;
                 one.PlaceOf = place;
+                               
 
-                rest.Put(one, "manufacturer");
+                try
+                {
+                    rest.Put(one, "manufacturer");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
             }
 
             if (entity == "Order")
@@ -255,9 +280,16 @@ namespace EQ66L2_HFT_2023241.Client
                 one.Quantity = quantity;
                 one.ProductID = prodid;
                 one.CustomerID = cusid;
+                               
 
-
-                rest.Put(one, "order");
+                try
+                {
+                    rest.Put(one, "order");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
             }
 
         }
@@ -363,7 +395,7 @@ namespace EQ66L2_HFT_2023241.Client
 
             var mony = rest.Get<MoneySpend>("order/MostMoneySpend");
 
-            /// 1 can be One person
+            /// Only One
 
             Console.WriteLine(" Name: " + mony[0].Name + " | Id: " + mony[0].Id + " | Amount: " + mony[0].Amount );
 
@@ -397,17 +429,24 @@ namespace EQ66L2_HFT_2023241.Client
 
             var b = rest.GetList<DateOrders>(Month,"order/MonthOrders");
 
+            bool i = false;
+
             foreach (var item in b)
             {
                 if (item.When.Month == Month)
                 {
                     Console.WriteLine("When : " + item.When + " | " + item.Product + " | " + item.Customer);
 
+                    i = true;
                 }
 
             }
 
-            
+            if (i == false)
+            {
+                Console.WriteLine("there was no order in this month");
+
+            }
 
             Console.ReadLine();
               }
@@ -419,23 +458,29 @@ namespace EQ66L2_HFT_2023241.Client
 
             //ManufactureByCountries
 
-            Console.WriteLine("Enter Country Name: ");
+            Console.WriteLine("Enter Country Name(min 3 char): ");
 
             string Country = Console.ReadLine();
 
             var c = rest.GetList<ManufactureByCountry>(Country,"product/ManufactureByCountries");
 
+            bool i = false;
             foreach (var item in c)
             {
                 if (item.MadeIn == Country)
                 {
                     Console.WriteLine("Product Name: " + item.ProductName + " | Manufacturer Name: " + item.ManufaturerName + " | Made in: " + item.MadeIn);
 
+                    i= true;
                 }
 
 
             }
 
+            if (i == false)
+            {
+                Console.WriteLine($"there is no country named like {Country}");
+            }
 
 
             Console.ReadLine();

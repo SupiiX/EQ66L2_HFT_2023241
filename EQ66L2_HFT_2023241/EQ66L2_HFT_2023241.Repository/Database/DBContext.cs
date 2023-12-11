@@ -44,7 +44,7 @@ namespace EQ66L2_HFT_2023241.Repository.Database
 
             //connections
 
-            /// need work here !!!!!!!
+         
 
 
             modelBuilder.Entity<Manufacturer>()

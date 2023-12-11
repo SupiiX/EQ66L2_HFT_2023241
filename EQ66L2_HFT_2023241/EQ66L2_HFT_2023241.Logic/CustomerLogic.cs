@@ -29,12 +29,12 @@ namespace EQ66L2_HFT_2023241.Logic
         {
             if (item.CustomerName.Length < 3 || item.CustomerName.Length == 0 )
             {
-                throw new Exception("Name is too short");
+                throw new ArgumentException("Name is too short");
 
             }
             if (!item.Email.Contains('@'))
             {
-                throw new Exception("Invalid Email");
+                throw new ArgumentException("Invalid Email");
 
             }
 
