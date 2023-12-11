@@ -160,24 +160,24 @@ namespace EQ66L2_HFT_2023241.Logic
 
     public class DateOrders
     {
-        public string Product;
-        public DateTime When;
-        public string Customer;
+        public string Product { get; set; }
+        public DateTime When { get; set; }
+        public string Customer { get; set; }
 
     }
     public class MoneySpend
     {
-        public int Id;
-        public string Name;
-        public int Amount;
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public int Amount { get; set; }
 
     }
     public class PupularPrd
     {
-        public string productName;
-        public int Count;
-        public string ManufacturerName;
-        public string MadeIn;
+        public string productName { get; set; }
+        public int Count { get; set; }
+        public string ManufacturerName { get; set; }
+        public string MadeIn { get; set; }
     }
     public class CountryMostPopularPrd
     {

@@ -1,4 +1,5 @@
-﻿using EQ66L2_HFT_2023241.Logic.Interfaces;
+﻿using EQ66L2_HFT_2023241.Logic;
+using EQ66L2_HFT_2023241.Logic.Interfaces;
 using EQ66L2_HFT_2023241.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
@@ -54,5 +55,22 @@ namespace EQ66L2_HFT_2023241.Endpoint.Controllers
             this.logic.Delete(id);
 
         }
+
+        /// non crud 
+        /// 
+
+        //  public IEnumerable<ManufactureByCountry> ManufactureByCountries(string Country)
+
+        [HttpGet("[action]")]
+        public IEnumerable<ManufactureByCountry> ManufactureByCountries(string Country)
+        {
+            return this.logic.ManufactureByCountries(Country);
+
+        }
+
+
+
+
+
     }
 }

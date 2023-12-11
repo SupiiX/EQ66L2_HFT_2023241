@@ -338,11 +338,91 @@ namespace EQ66L2_HFT_2023241.Client
                 }
             }
         }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////
+
+        static void MostPopularPrdMethod()
+        {
+            //MostPopularPrd
+
+            var prd = rest.Get<PupularPrd>("order/MostPopularPrd");
+
+            foreach (var item in prd)
+            {
+                Console.WriteLine(item.productName +" - "+ item.ManufacturerName +" - "+ item.MadeIn);
+            }
+                        
+            Console.ReadLine();
+        }
+
+        
+
+       static void MostMoneySpendMethod()
+        {
+            //MostMoneySpend
+
+            var mony = rest.Get<MoneySpend>("order/MostMoneySpend");
+
+            /// 1 can be One person
+
+            Console.WriteLine(" Name: " + mony[0].Name + " | Id: " + mony[0].Id + " | Amount: " + mony[0].Amount );
+
+            Console.ReadLine();
+        }
+
+        static void PlaceOfPopularPrdMethod()
+        {
+            //PlaceOfPopularPrd
+
+
+            var a = rest.Get<CountryMostPopularPrd>("order/PlaceOfPopularPrd");
+
+            foreach (var item in a)
+            {
+                Console.WriteLine("Country: " + item.Country + " Quantity:" +item.Quantity + " AverageWarranty: " + item.AverageWarranty);
+            }
+
+            Console.ReadLine();
+        }
+        
+
+             static void MonthOrdersMethod(int Month)
+                {
+            //MonthOrders
+
+
+            var b = rest.Get<DateOrders>(Month,"order/MonthOrders");
+
+          
+
+            Console.ReadLine();
+              }
+
+
+
+        static void ManufactureByCountriesMethod(string Country)
+        {
+
+            //ManufactureByCountries
+
+            var c = rest.Get<ManufactureByCountry>("product/ManufactureByCountries");
+
+
+            Console.ReadLine();
+        }
+
+
+
+
+
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         public static void Main(string[] args)
         {
            rest = new RestService("http://localhost:63659/","order");
+
+           // MostPopularPrdMethod();
+
 
             var customerSubMenu = new ConsoleMenu(args, level: 1)
                 .Add("List", () => List("Customer"))
@@ -370,6 +450,9 @@ namespace EQ66L2_HFT_2023241.Client
                 .Add("Create", () => Create("Order"))
                 .Add("Delete", () => Delete("Order"))
                 .Add("Update", () => Update("Order"))
+                .Add("3 Most Popular product", () => MostPopularPrdMethod())
+                .Add("Place of popular product", () => PlaceOfPopularPrdMethod())
+                .Add("Who spend the most money", () => MostMoneySpendMethod())
                 .Add("Exit", ConsoleMenu.Close);
 
 
@@ -383,6 +466,7 @@ namespace EQ66L2_HFT_2023241.Client
             menu.Show();
 
 
+            //MostPopularPrdMethod();
 
 
 
@@ -390,6 +474,44 @@ namespace EQ66L2_HFT_2023241.Client
         }
 
     }
+}
+
+
+
+public class ManufactureByCountry
+{
+    public string ManufaturerName { get; set; }
+    public string MadeIn { get; set; }
+    public string ProductName { get; set; }
+
+}
+
+public class DateOrders
+{
+    public string Product { get; set; }
+    public DateTime When { get; set; }
+    public string Customer { get; set; }
+
+}
+public class MoneySpend
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public int Amount { get; set; }
+
+}
+public class PupularPrd
+{
+    public string productName { get; set; }
+    public int Count { get; set; }
+    public string ManufacturerName { get; set; }
+    public string MadeIn { get; set; }
+}
+public class CountryMostPopularPrd
+{
+    public string Country { get; set; }
+    public int Quantity { get; set; }
+    public double AverageWarranty { get; set; }
 }
 
 

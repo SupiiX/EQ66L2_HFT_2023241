@@ -92,9 +92,9 @@ namespace EQ66L2_HFT_2023241.Logic
 
     public class ManufactureByCountry
     {
-        public string ManufaturerName;
-        public string MadeIn;
-        public string ProductName;
+        public string ManufaturerName { get; set; }
+        public string MadeIn { get; set; }
+        public string ProductName { get; set; }
 
     }
 
