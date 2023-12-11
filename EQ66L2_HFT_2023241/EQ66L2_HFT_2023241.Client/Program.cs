@@ -15,12 +15,14 @@ namespace EQ66L2_HFT_2023241.Client
 
         static RestService rest;
 
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////
         static void Create(string entity)
         {
             if (entity == "Customer")
             {
-                Console.Write("Enter Customer Name: ");
+                Console.Write("Enter Customer Name:");
                 string name = Console.ReadLine();
+
                 Console.Write("Enter Customer Email addres: ");
                 string email = Console.ReadLine();
                 rest.Post(new Customer() { CustomerName = name, Email = email }, "customer");
@@ -30,9 +32,17 @@ namespace EQ66L2_HFT_2023241.Client
             {
                 Console.Write("Enter Product Name: ");
                 string name = Console.ReadLine();
+
                 Console.Write("Enter Product price: ");
                 int price = int.Parse(Console.ReadLine());
-                rest.Post(new Product() { ProductName = name, Price = price }, "product");
+
+                Console.Write("Enter Product warranty: ");
+                int warr = int.Parse(Console.ReadLine());
+
+                Console.Write("Enter Manufacturer Id: ");
+                int ManId = int.Parse(Console.ReadLine());
+
+                rest.Post(new Product() { ProductName = name, Price = price, Warranty_year = warr, ManufacturerID = ManId }, "product");
             }
 
 
@@ -55,7 +65,7 @@ namespace EQ66L2_HFT_2023241.Client
             }
 
         }
-
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////
         static void List(string entity)
         {
             if (entity == "Customer")
@@ -63,21 +73,21 @@ namespace EQ66L2_HFT_2023241.Client
                 List<Customer> customers = rest.Get<Customer>("customer");
                 foreach (var item in customers)
                 {
-                    Console.WriteLine(item.CustomerID + ": " + item.CustomerName);
+                    Console.WriteLine("ID: " + item.CustomerID + " / CustomerName: " + item.CustomerName + " / CustomerEmail: " + item.Email);
                 }
             }
-            Console.ReadLine();
+            
 
             if (entity == "Product")
             {
                 List<Product> products = rest.Get<Product>("product");
                 foreach (var item in products)
                 {
-                    Console.WriteLine(item.ProductID + ": " + item.ProductName);
+                    Console.WriteLine("ID: " + item.ProductID + " / ProductName: " + item.ProductName + " / Warranty: " + item.Warranty_year);
 
                 }
             }
-            Console.ReadLine();
+            
 
 
             if (entity == "Manufacturer")
@@ -85,10 +95,10 @@ namespace EQ66L2_HFT_2023241.Client
                 List<Manufacturer> manufacturers = rest.Get<Manufacturer>("manufacturer");
                 foreach (var item in manufacturers)
                 {
-                    Console.WriteLine(item.ManufacturerID + ": " + item.ManufacturerName);
+                    Console.WriteLine("ID: " + item.ManufacturerID + " / ManufacturerName: " + item.ManufacturerName + " / place of manufacture: " + item.PlaceOf );
                 }
             }
-            Console.ReadLine();
+           
 
 
             if (entity == "Order")
@@ -96,14 +106,15 @@ namespace EQ66L2_HFT_2023241.Client
                 List<Order> orders = rest.Get<Order>("order");
                 foreach (var item in orders)
                 {
-                    Console.WriteLine(item.OrderID + ": " + item.Quantity + ": " + item.OrderDate);
+                    Console.WriteLine("ID: " + item.OrderID + " / Quantity: " + item.Quantity + " / Date of order: " + item.OrderDate );
                 }
             }
+
+
             Console.ReadLine();
 
-
         }
-
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////
         static void Update(string entity)
         {
             if (entity == "Customer")
@@ -154,9 +165,8 @@ namespace EQ66L2_HFT_2023241.Client
                 rest.Put(one, "order");
             }
 
-
-
         }
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////
         static void Delete(string entity)
         {
             if (entity == "Customer")
@@ -187,7 +197,7 @@ namespace EQ66L2_HFT_2023241.Client
                 rest.Delete(id, "order");
             }
         }
-
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         public static void Main(string[] args)
         {
