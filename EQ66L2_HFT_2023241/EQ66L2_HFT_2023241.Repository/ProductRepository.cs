@@ -52,16 +52,20 @@ namespace EQ66L2_HFT_2023241.Repository
 
             var OldData = Read(value.ProductID);
 
-            foreach (var item in OldData.GetType().GetProperties())
+          if (OldData != null)
             {
-                
+                OldData.Warranty_year = value.Warranty_year;
+                OldData.ProductName = value.ProductName;
+                OldData.Manufacturer = value.Manufacturer;
+                OldData.Orders = value.Orders;
+                OldData.Price = value.Price;
+                OldData.ManufacturerID = value.ManufacturerID;
 
-                item.SetValue(OldData, item.GetValue(value));
-
+                dbContext.SaveChanges();
             }
-            dbContext.SaveChanges();
+          
 
-            dbContext.SaveChanges();
+            
         }
     }
 }

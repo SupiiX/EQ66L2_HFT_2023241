@@ -25,7 +25,17 @@ namespace EQ66L2_HFT_2023241.Client
 
                 Console.Write("Enter Customer Email addres: ");
                 string email = Console.ReadLine();
-                rest.Post(new Customer() { CustomerName = name, Email = email }, "customer");
+
+                try
+                {
+                    rest.Post(new Customer() { CustomerName = name, Email = email }, "customer");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+
+                
             }
 
             if (entity == "Product")
@@ -42,7 +52,15 @@ namespace EQ66L2_HFT_2023241.Client
                 Console.Write("Enter Manufacturer Id: ");
                 int ManId = int.Parse(Console.ReadLine());
 
-                rest.Post(new Product() { ProductName = name, Price = price, Warranty_year = warr, ManufacturerID = ManId }, "product");
+                try
+                {
+                    rest.Post(new Product() { ProductName = name, Price = price, Warranty_year = warr, ManufacturerID = ManId }, "product");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            
             }
 
 
@@ -50,18 +68,47 @@ namespace EQ66L2_HFT_2023241.Client
             {
                 Console.Write("Enter Manufacturer Name: ");
                 string name = Console.ReadLine();
-                Console.Write("Enter the place of manufacture");
+
+                Console.Write("Enter the place of manufacture: ");
                 string placeof = Console.ReadLine();
-                rest.Post(new Manufacturer() { ManufacturerName = name, PlaceOf = placeof }, "manufacturer");
+
+                try
+                {
+                    rest.Post(new Manufacturer() { ManufacturerName = name, PlaceOf = placeof }, "manufacturer");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
             }
 
             if (entity == "Order")
             {
                 Console.Write("Enter Quantity: ");
                 int quantity = int.Parse(Console.ReadLine());
-                Console.Write("Enter Order Date");
-                DateTime Time = DateTime.Parse(Console.ReadLine());
-                rest.Post(new Order() { Quantity = quantity, OrderDate = Time }, "order");
+
+               // Console.Write("Enter Order Date OR Enter - if you want to Order NOW");
+                //DateTime Time = DateTime.Parse(Console.ReadLine());
+                DateTime Time = DateTime.Now;
+
+
+                Console.Write("Enter Customer Id: ");
+                int CustomerId = int.Parse(Console.ReadLine());
+
+                Console.Write("Enter Product Id: ");
+                int ProductId = int.Parse(Console.ReadLine());
+
+                try
+                {
+                    rest.Post(new Order() { Quantity = quantity, OrderDate = Time, CustomerID = CustomerId, ProductID = ProductId }, "order");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+
+
+                
             }
 
         }
@@ -121,10 +168,19 @@ namespace EQ66L2_HFT_2023241.Client
             {
                 Console.Write("Enter Customer's id to update: ");
                 int id = int.Parse(Console.ReadLine());
+
                 Customer one = rest.Get<Customer>(id, "customer");
-                Console.Write($"New name [old: {one.CustomerName}]: ");
+
+
+                Console.Write($"New Name [old: {one.CustomerName}]: ");
                 string name = Console.ReadLine();
+
+                Console.Write($"New Emal [old: {one.Email}]: ");
+                string email = Console.ReadLine();
+                
                 one.CustomerName = name;
+                one.Email = email;
+                
                 rest.Put(one, "customer");
             }
 
@@ -132,10 +188,27 @@ namespace EQ66L2_HFT_2023241.Client
             {
                 Console.Write("Enter Product's id to update: ");
                 int id = int.Parse(Console.ReadLine());
+
                 Product one = rest.Get<Product>(id, "product");
+
                 Console.Write($"New name [old: {one.ProductName}]: ");
                 string name = Console.ReadLine();
+
+                Console.Write($"New Price [old: {one.Price}]: ");
+                int price = int.Parse(Console.ReadLine());
+
+                Console.Write($"New Warranty [old: {one.Warranty_year}]: ");
+                int warr = int.Parse(Console.ReadLine());
+
+                Console.Write($"New manufacturer [old (Id): {one.ManufacturerID}]: ");
+                int Manuf = int.Parse(Console.ReadLine());
+
+
                 one.ProductName = name;
+                one.Warranty_year = warr;
+                one.Price = price;
+                one.ManufacturerID = Manuf;
+
                 rest.Put(one, "product");
             }
 
@@ -144,10 +217,18 @@ namespace EQ66L2_HFT_2023241.Client
             {
                 Console.Write("Enter Manufacturer's id to update: ");
                 int id = int.Parse(Console.ReadLine());
+
                 Manufacturer one = rest.Get<Manufacturer>(id, "manufacturer");
+
                 Console.Write($"New name [old: {one.ManufacturerName}]: ");
                 string name = Console.ReadLine();
+
+                Console.Write($"New Place of manufacture [old: {one.PlaceOf}]: ");
+                string place = Console.ReadLine();
+
                 one.ManufacturerName = name;
+                one.PlaceOf = place;
+
                 rest.Put(one, "manufacturer");
             }
 
@@ -155,12 +236,26 @@ namespace EQ66L2_HFT_2023241.Client
             {
                 Console.Write("Enter Order id to update: ");
                 int id = int.Parse(Console.ReadLine());
+
                 Order one = rest.Get<Order>(id, "order");
-                Console.Write($"New quantity - OrderDate [old: {one.Quantity} - {one.OrderDate}]: ");
+
+                Console.Write($"New quantity [old: {one.Quantity}]: ");
                 int quantity = int.Parse(Console.ReadLine());
-                one.Quantity = quantity;
+
+                Console.Write($"New OrderDate [old: {one.OrderDate}]: ");
                 DateTime OrderDate = DateTime.Parse(Console.ReadLine());
+
+                Console.Write($"New Product (id) [old: {one.ProductID}]: ");
+                int prodid = int.Parse(Console.ReadLine());
+
+                Console.Write($"New Customer (id) [old: {one.CustomerID}]: ");
+                int cusid = int.Parse(Console.ReadLine());
+
                 one.OrderDate = OrderDate;
+                one.Quantity = quantity;
+                one.ProductID = prodid;
+                one.CustomerID = cusid;
+
 
                 rest.Put(one, "order");
             }
@@ -171,30 +266,76 @@ namespace EQ66L2_HFT_2023241.Client
         {
             if (entity == "Customer")
             {
+                Console.WriteLine("Items: ");
+                Console.WriteLine("press enter to continue deleting !! ");
+                List(entity);
+                
+
                 Console.Write("Enter Customer's id to delete: ");
                 int id = int.Parse(Console.ReadLine());
-                rest.Delete(id, "customer");
+                try
+                {
+                    rest.Delete(id, "customer");
+                }
+                catch(Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }               
             }
 
             if (entity == "Product")
             {
+                Console.WriteLine("Items: ");
+                Console.WriteLine("press enter to continue deleting !! ");
+                List(entity);
+
                 Console.Write("Enter Product's id to delete: ");
                 int id = int.Parse(Console.ReadLine());
-                rest.Delete(id, "product");
+                try
+                {
+                    rest.Delete(id, "product");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+                
             }
 
             if (entity == "Manufacturer")
             {
+                Console.WriteLine("Items: ");
+                Console.WriteLine("press enter to continue deleting !! ");
+                List(entity);
+
                 Console.Write("Enter Manufacturer's id to delete: ");
                 int id = int.Parse(Console.ReadLine());
-                rest.Delete(id, "manufacturer");
+                try
+                {
+                    rest.Delete(id, "manufacturer");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
             }
 
             if (entity == "Order")
             {
+                Console.WriteLine("Items: ");
+                Console.WriteLine("press enter to continue deleting !! ");
+                List(entity);
+
                 Console.Write("Enter Order id to delete: ");
                 int id = int.Parse(Console.ReadLine());
-                rest.Delete(id, "order");
+                try
+                {
+                    rest.Delete(id, "order");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
             }
         }
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////

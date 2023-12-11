@@ -27,14 +27,19 @@ namespace EQ66L2_HFT_2023241.Repository
 
             var OldData = Read(value.ManufacturerID);
 
-            foreach (var item in OldData.GetType().GetProperties())
+           if (OldData != null)
             {
-                //  
+                OldData.ManufacturerName = value.ManufacturerName;
+                OldData.PlaceOf = value.PlaceOf;
 
-                item.SetValue(OldData, item.GetValue(value));
+                OldData.Products = value.Products;
+                OldData.ManufacturerID = value.ManufacturerID;
 
+                dbContext.SaveChanges();
             }
-            dbContext.SaveChanges();
+
+
+           
 
         }
     }

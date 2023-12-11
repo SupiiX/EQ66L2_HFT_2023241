@@ -27,14 +27,21 @@ namespace EQ66L2_HFT_2023241.Repository
         {
             var OldData = Read(value.CustomerID);
 
-            foreach (var item in OldData.GetType().GetProperties())
+            if (OldData != null)
             {
-                 
+               // OldData.CustomerID = value.CustomerID;
+                OldData.CustomerName = value.CustomerName;
+                OldData.Email = value.Email;
 
-                item.SetValue(OldData, item.GetValue(value));
+                OldData.Orders = value.Orders;
+                OldData.Products = value.Products;
 
+                dbContext.SaveChanges();
             }
-            dbContext.SaveChanges();
+
+
+            
+            
         }
     }
 }

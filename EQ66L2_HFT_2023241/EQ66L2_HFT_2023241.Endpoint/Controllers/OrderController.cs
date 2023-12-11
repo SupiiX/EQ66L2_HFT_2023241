@@ -1,4 +1,5 @@
-﻿using EQ66L2_HFT_2023241.Logic.Interfaces;
+﻿using EQ66L2_HFT_2023241.Logic;
+using EQ66L2_HFT_2023241.Logic.Interfaces;
 using EQ66L2_HFT_2023241.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
@@ -55,6 +56,43 @@ namespace EQ66L2_HFT_2023241.Endpoint.Controllers
             this.logic.Delete(id);
 
         }
+
+        /////// non crud 
+
+        [HttpGet("[action]")]
+        public IEnumerable<PupularPrd> MostPopularPrd()
+        {
+            return this.logic.MostPopularPrd();
+
+        }
+
+
+        [HttpGet("[action]")]
+        public IEnumerable<MoneySpend> MostMoneySpend()
+        {
+            return this.logic.MostMoneySpend();
+
+        }
+
+        //IEnumerable<CountryMostPopularPrd> PlaceOfPopularPrd();
+
+        [HttpGet("[action]")]
+        public IEnumerable<CountryMostPopularPrd> PlaceOfPopularPrd()
+        {
+            return this.logic.PlaceOfPopularPrd();
+
+        }
+
+        //IEnumerable<DateOrders> MonthOrders(int Month);
+
+        [HttpGet("[action]")]
+        public IEnumerable<DateOrders> MonthOrders(int Month)
+        {
+            return this.logic.MonthOrders(Month);
+
+        }
+
+
 
     }
 }

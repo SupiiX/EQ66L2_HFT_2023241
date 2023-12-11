@@ -73,8 +73,12 @@ namespace EQ66L2_HFT_2023241.Repository.Database
                 .WithOne(x => x.Product)
                 .HasForeignKey(x => x.OrderID);
 
-                    
-
+            //*/*// a legujjab 
+            modelBuilder.Entity<Product>()
+                .HasOne(x => x.Manufacturer)
+                .WithMany(x => x.Products)
+                .HasForeignKey(x => x.ManufacturerID);
+            ///*/
 
             modelBuilder.Entity<Customer>()
                 .HasMany(t => t.Products)
