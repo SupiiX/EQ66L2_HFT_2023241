@@ -496,8 +496,7 @@ namespace EQ66L2_HFT_2023241.Client
         {
            rest = new RestService("http://localhost:63659/","order");
 
-           // MostPopularPrdMethod();
-
+         
 
             var customerSubMenu = new ConsoleMenu(args, level: 1)
                 .Add("List", () => List("Customer"))
