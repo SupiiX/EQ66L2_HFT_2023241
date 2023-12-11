@@ -47,7 +47,6 @@ namespace EQ66L2_HFT_2023241.Repository.Database
             /// need work here !!!!!!!
 
 
-
             modelBuilder.Entity<Manufacturer>()
                 .HasMany(x => x.Products)
                 .WithOne(x => x.Manufacturer)
@@ -66,35 +65,45 @@ namespace EQ66L2_HFT_2023241.Repository.Database
                 .HasForeignKey(x => x.CustomerID)
                 .OnDelete(DeleteBehavior.Cascade);
 
+            ///////
+            ///
+
+            modelBuilder.Entity<Product>()
+                .HasMany(x => x.Orders)
+                .WithOne(x => x.Product)
+                .HasForeignKey(x => x.OrderID);
+
+                    
+
+
+            modelBuilder.Entity<Customer>()
+                .HasMany(t => t.Products)
+                .WithMany(t => t.Customers)
+                .UsingEntity<Order>(
+                            t => t.HasOne(t => t.Product)
+                               .WithMany()
+                               .HasForeignKey(t => t.ProductID)
+                               .OnDelete(DeleteBehavior.Cascade),
+                            t => t.HasOne(t => t.Customer)
+                               .WithMany()
+                               .HasForeignKey(t => t.CustomerID)
+                               .OnDelete(DeleteBehavior.Cascade)
+                               );
 
 
 
-            //modelBuilder.Entity<Customer>()
-            //    .HasMany(t => t.Products)
-            //    .WithMany(t => t.Customers)
-            //    .UsingEntity<Order>(
-            //                t => t.HasOne(t => t.Product)
-            //                   .WithMany()
-            //                   .HasForeignKey(t => t.ProductID)
-            //                   .OnDelete(DeleteBehavior.Cascade),
-            //                t => t.HasOne(t => t.Customer)
-            //                   .WithMany()
-            //                   .HasForeignKey(t => t.CustomerID)
-            //                   .OnDelete(DeleteBehavior.Cascade)
-            //                   );
 
+            modelBuilder.Entity<Order>()
+                .HasOne(t => t.Customer)
+                .WithMany(customer => customer.Orders)
+                .HasForeignKey(t => t.CustomerID)
+                .OnDelete(DeleteBehavior.Cascade);
 
-            //modelBuilder.Entity<Order>()
-            //    .HasOne(t => t.Customer)
-            //    .WithMany(customer => customer.Orders)
-            //    .HasForeignKey(t => t.CustomerID)
-            //    .OnDelete(DeleteBehavior.Cascade);
-
-            //modelBuilder.Entity<Order>()
-            //    .HasOne(t => t.Product)
-            //    .WithMany(product => product.Orders)
-            //    .HasForeignKey(t => t.ProductID)
-            //    .OnDelete(DeleteBehavior.Cascade);
+            modelBuilder.Entity<Order>()
+                .HasOne(t => t.Product)
+                .WithMany(product => product.Orders)
+                .HasForeignKey(t => t.ProductID)
+                .OnDelete(DeleteBehavior.Cascade);
 
 
             // datas

@@ -1,4 +1,5 @@
 ﻿using EQ66L2_HFT_2023241.Models;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace EQ66L2_HFT_2023241.Logic.Interfaces
@@ -10,5 +11,8 @@ namespace EQ66L2_HFT_2023241.Logic.Interfaces
         Product Read(int id);
         IQueryable<Product> ReadAll();
         void Update(Product value);
+
+        IEnumerable<ManufactureByCountry> ManufactureByCountries(string Country);
+
     }
 }

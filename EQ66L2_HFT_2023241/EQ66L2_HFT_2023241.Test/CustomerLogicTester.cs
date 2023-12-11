@@ -20,12 +20,12 @@ namespace EQ66L2_HFT_2023241.Test
 
         CustomerLogic Logic;
 
-        Mock<ICustomerRepository> mockCustomerRepo;
+        Mock<IReposit<Customer>> mockCustomerRepo;
 
         [SetUp]
         public void Inint()
         {
-            mockCustomerRepo = new Mock<ICustomerRepository>();
+            mockCustomerRepo = new Mock<IReposit<Customer>>();
 
             mockCustomerRepo.Setup(x => x.ReadAll()).Returns(new List<Customer>()
             {

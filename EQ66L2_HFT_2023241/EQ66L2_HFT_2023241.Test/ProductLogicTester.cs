@@ -11,20 +11,22 @@ using System.Linq;
 namespace EQ66L2_HFT_2023241.Test
 {
     [TestFixture]
-    public class SupplyLogicTester
+    public class ProductLogicTester
     {
 
-        SupplyLogic SupplyLogic;
+        
 
-        Mock<IProductRepository> mockProductRepo;
+        ProductLogic ProductLogic;
 
-        Mock<IManufacturerRepository> mockManufacturerRepo;
+        Mock<IReposit<Product>> mockProductRepo;
+
+        Mock<IReposit<Manufacturer>> mockManufacturerRepo;
 
         [SetUp]
         public void Init()
         {
-           mockManufacturerRepo = new Mock<IManufacturerRepository>();
-           mockProductRepo = new Mock<IProductRepository>();
+           mockManufacturerRepo = new Mock<IReposit<Manufacturer>>();
+           mockProductRepo = new Mock<IReposit<Product>>();
 
 
 
@@ -58,7 +60,10 @@ namespace EQ66L2_HFT_2023241.Test
 
             }.AsQueryable());
 
-            SupplyLogic = new SupplyLogic(mockProductRepo.Object, mockManufacturerRepo.Object);
+            //SupplyLogic = new SupplyLogic(mockProductRepo.Object, mockManufacturerRepo.Object);
+
+            ProductLogic = new ProductLogic(mockProductRepo.Object);
+
           }
 
         [Test]
@@ -66,11 +71,11 @@ namespace EQ66L2_HFT_2023241.Test
         {
             var Product = new Product() { ProductName = "CocaCola", Price = 500};
 
-            SupplyLogic.Create_Product(Product);
+            ProductLogic.Create(Product);
 
             mockProductRepo.Verify(x => x.Create(Product), Times.Once);
         }
-
+        [Test]
         public void Create_Product_PriceExeption()
         {
 
@@ -78,14 +83,14 @@ namespace EQ66L2_HFT_2023241.Test
 
          //   mockProductRepo.Verify(x => x.Create(Product), Times.Never);
 
-            Assert.Throws<Exception>(() => SupplyLogic.Create_Product(Product));
+            Assert.Throws<Exception>(() => ProductLogic.Create(Product));
         }
 
         [Test]
         public void ManufactureByCountriesTester()
         {
             var country = "Germany";
-            var actualResult = SupplyLogic.ManufactureByCountries(country).ToList();
+            var actualResult = ProductLogic.ManufactureByCountries(country).ToList();
 
             var expectedResult = new List<ManufactureByCountry>
             {
@@ -101,12 +106,12 @@ namespace EQ66L2_HFT_2023241.Test
 
         }
 
-
-        public void ManufactureByCountriesInvalidTester() //
+        [Test]
+        public void ManufactureByCountriesInvalidTester() 
         {
-            var InvalidCountry = "Ger";
+            var InvalidCountry = "Ge";
 
-            Assert.Throws<Exception>(() => SupplyLogic.ManufactureByCountries(InvalidCountry));
+            Assert.Throws<Exception>(() => ProductLogic.ManufactureByCountries(InvalidCountry));
 
         }
 

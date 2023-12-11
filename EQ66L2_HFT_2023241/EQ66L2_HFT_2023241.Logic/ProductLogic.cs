@@ -2,6 +2,7 @@
 using EQ66L2_HFT_2023241.Models;
 using EQ66L2_HFT_2023241.Repository;
 using EQ66L2_HFT_2023241.Repository.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,7 +42,7 @@ namespace EQ66L2_HFT_2023241.Logic
         {
             this.reposit.Delete(id);
         }
-
+               
         public Product Read(int id)
         {
             return this.reposit.Read(id);
@@ -57,11 +58,44 @@ namespace EQ66L2_HFT_2023241.Logic
             this.reposit.Update(value);
         }
 
+        /////////////////////////////////
 
 
+        public IEnumerable<ManufactureByCountry> ManufactureByCountries(string Country)
+        {
+            if (Country.Length < 3)
+            {
+
+                throw new Exception("County name error");
+            }
+
+            return this.reposit.ReadAll().Include(x => x.Manufacturer)
+                .Select(x => new ManufactureByCountry
+                {
+                    ManufaturerName = x.Manufacturer.ManufacturerName,
+
+                    ProductName = x.ProductName,
+
+                    MadeIn = x.Manufacturer.PlaceOf
+
+
+                }).Where(x => x.MadeIn == Country);
+        }
 
 
 
 
     }
+
+
+
+
+    public class ManufactureByCountry
+    {
+        public string ManufaturerName;
+        public string MadeIn;
+        public string ProductName;
+
+    }
+
 }

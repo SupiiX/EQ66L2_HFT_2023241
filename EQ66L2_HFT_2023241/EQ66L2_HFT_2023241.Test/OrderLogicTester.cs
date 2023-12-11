@@ -24,12 +24,12 @@ namespace EQ66L2_HFT_2023241.Test
 
         OrderLogic Logic;
 
-        Mock<IOrderRepository> mockOrderRepo;
+        Mock<IReposit<Order>> mockOrderRepo;
 
         [SetUp]
         public void Init()
         {
-            mockOrderRepo = new Mock<IOrderRepository>();
+            mockOrderRepo = new Mock<IReposit<Order>>();
 
             mockOrderRepo.Setup(x => x.ReadAll()).Returns(new List<Order>()
             { 

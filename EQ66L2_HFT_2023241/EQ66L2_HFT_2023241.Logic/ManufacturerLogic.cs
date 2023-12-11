@@ -1,9 +1,11 @@
 ﻿using EQ66L2_HFT_2023241.Logic.Interfaces;
 using EQ66L2_HFT_2023241.Models;
 using EQ66L2_HFT_2023241.Repository.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -50,40 +52,8 @@ namespace EQ66L2_HFT_2023241.Logic
         {
             this.reposit.Update(value);
         }
-
-        /// non crud
-        /// 
-
-        public IEnumerable<ManufactureByCountry> ManufactureByCountries(string Country)
-        {
-
-            /// ki gyart ott és mit 
-
-
-            return ProductLogic.ReadAll().Include(x => x.Manufacturer)
-                .Select(x => new ManufactureByCountry
-                {
-                    ManufaturerName = x.Manufacturer.ManufacturerName,
-
-                    ProductName = x.ProductName,
-
-                    MadeIn = x.Manufacturer.PlaceOf
-
-
-                }).Where(x => x.MadeIn == Country);
-
-        }
-
-
+               
 
     }
 
-
-    public class ManufactureByCountry
-    {
-        public string ManufaturerName;
-        public string MadeIn;
-        public string ProductName;
-
-    }
 }
