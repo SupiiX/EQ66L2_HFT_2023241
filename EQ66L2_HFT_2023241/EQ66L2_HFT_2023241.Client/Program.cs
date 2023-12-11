@@ -537,8 +537,8 @@ namespace EQ66L2_HFT_2023241.Client
                 .Add("3 Most Popular product", () => MostPopularPrdMethod())
                 .Add("Place of popular product", () => PlaceOfPopularPrdMethod())
                 .Add("Who spend the most money", () => MostMoneySpendMethod())
-                .Add("Orders in Month", () => MonthOrdersMethod())
-                .Add("Manufacturer by country", () => ManufactureByCountriesMethod())
+                .Add("Orders in Month (int Month)", () => MonthOrdersMethod())
+                .Add("Manufacturer by country (str Country)", () => ManufactureByCountriesMethod())
                 .Add("Exit", ConsoleMenu.Close);
 
 
