@@ -384,28 +384,58 @@ namespace EQ66L2_HFT_2023241.Client
 
             Console.ReadLine();
         }
-        
+        //---
 
-             static void MonthOrdersMethod(int Month)
+        static void MonthOrdersMethod()
                 {
             //MonthOrders
 
+            Console.WriteLine("Enter month (int): ");
 
-            var b = rest.Get<DateOrders>(Month,"order/MonthOrders");
+            int Month = int.Parse(Console.ReadLine());
 
-          
+
+            var b = rest.GetList<DateOrders>(Month,"order/MonthOrders");
+
+            foreach (var item in b)
+            {
+                if (item.When.Month == Month)
+                {
+                    Console.WriteLine("When : " + item.When + " | " + item.Product + " | " + item.Customer);
+
+                }
+
+            }
+
+            
 
             Console.ReadLine();
               }
 
+       
 
-
-        static void ManufactureByCountriesMethod(string Country)
+        static void ManufactureByCountriesMethod()
         {
 
             //ManufactureByCountries
 
-            var c = rest.Get<ManufactureByCountry>("product/ManufactureByCountries");
+            Console.WriteLine("Enter Country Name: ");
+
+            string Country = Console.ReadLine();
+
+            var c = rest.GetList<ManufactureByCountry>(Country,"product/ManufactureByCountries");
+
+            foreach (var item in c)
+            {
+                if (item.MadeIn == Country)
+                {
+                    Console.WriteLine("Product Name: " + item.ProductName + " | Manufacturer Name: " + item.ManufaturerName + " | Made in: " + item.MadeIn);
+
+                }
+
+
+            }
+
 
 
             Console.ReadLine();
@@ -450,10 +480,17 @@ namespace EQ66L2_HFT_2023241.Client
                 .Add("Create", () => Create("Order"))
                 .Add("Delete", () => Delete("Order"))
                 .Add("Update", () => Update("Order"))
+                .Add("Exit", ConsoleMenu.Close);
+
+
+            var NonCrudSubMenu = new ConsoleMenu(args, level: 1)
                 .Add("3 Most Popular product", () => MostPopularPrdMethod())
                 .Add("Place of popular product", () => PlaceOfPopularPrdMethod())
                 .Add("Who spend the most money", () => MostMoneySpendMethod())
+                .Add("Orders in Month", () => MonthOrdersMethod())
+                .Add("Manufacturer by country", () => ManufactureByCountriesMethod())
                 .Add("Exit", ConsoleMenu.Close);
+
 
 
             var menu = new ConsoleMenu(args, level: 0)
@@ -461,6 +498,7 @@ namespace EQ66L2_HFT_2023241.Client
                 .Add("Customers", () => customerSubMenu.Show())
                 .Add("Products", () => ProductSubMenu.Show())
                 .Add("Manufactures", () => ManufacturerSubMenu.Show())
+                .Add("NonCrudMethods", () => NonCrudSubMenu.Show())
                 .Add("Exit", ConsoleMenu.Close);
 
             menu.Show();

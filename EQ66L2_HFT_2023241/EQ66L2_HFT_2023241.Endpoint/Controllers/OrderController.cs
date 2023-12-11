@@ -85,7 +85,7 @@ namespace EQ66L2_HFT_2023241.Endpoint.Controllers
 
         //IEnumerable<DateOrders> MonthOrders(int Month);
 
-        [HttpGet("[action]")]
+        [HttpGet("[action]/{Month}")]
         public IEnumerable<DateOrders> MonthOrders(int Month)
         {
             return this.logic.MonthOrders(Month);

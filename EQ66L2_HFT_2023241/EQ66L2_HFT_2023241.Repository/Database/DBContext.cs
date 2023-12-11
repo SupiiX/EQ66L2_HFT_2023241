@@ -95,8 +95,6 @@ namespace EQ66L2_HFT_2023241.Repository.Database
                                );
 
 
-
-
             modelBuilder.Entity<Order>()
                 .HasOne(t => t.Customer)
                 .WithMany(customer => customer.Orders)

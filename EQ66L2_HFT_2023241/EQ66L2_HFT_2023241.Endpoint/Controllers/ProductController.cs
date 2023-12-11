@@ -61,7 +61,7 @@ namespace EQ66L2_HFT_2023241.Endpoint.Controllers
 
         //  public IEnumerable<ManufactureByCountry> ManufactureByCountries(string Country)
 
-        [HttpGet("[action]")]
+        [HttpGet("[action]/{Country}")]
         public IEnumerable<ManufactureByCountry> ManufactureByCountries(string Country)
         {
             return this.logic.ManufactureByCountries(Country);
