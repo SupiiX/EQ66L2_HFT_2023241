@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("EQ66L2_HFT_2023241.Client")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+98925cfa9363978d4f6773a940beeb15ca3a8ea5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+505051c7dd7c6429490bd027d238ba77f7f982b5")]
 [assembly: System.Reflection.AssemblyProductAttribute("EQ66L2_HFT_2023241.Client")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EQ66L2_HFT_2023241.Client")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

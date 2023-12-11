@@ -424,8 +424,8 @@ namespace EQ66L2_HFT_2023241.Client
 
             Console.WriteLine("Enter month (int): ");
 
-            int Month = int.Parse(Console.ReadLine());
-
+            int Month;
+            int.TryParse(Console.ReadLine(), out Month);
 
             var b = rest.GetList<DateOrders>(Month,"order/MonthOrders");
 
@@ -462,27 +462,33 @@ namespace EQ66L2_HFT_2023241.Client
 
             string Country = Console.ReadLine();
 
-            var c = rest.GetList<ManufactureByCountry>(Country,"product/ManufactureByCountries");
-
-            bool i = false;
-            foreach (var item in c)
+            if (string.IsNullOrWhiteSpace(Country))
             {
-                if (item.MadeIn == Country)
-                {
-                    Console.WriteLine("Product Name: " + item.ProductName + " | Manufacturer Name: " + item.ManufaturerName + " | Made in: " + item.MadeIn);
+                Console.WriteLine($"You need to add parameter");
+            }
+            else
+            {
+                var c = rest.GetList<ManufactureByCountry>(Country, "product/ManufactureByCountries");
 
-                    i= true;
+                bool i = false;
+                foreach (var item in c)
+                {
+                    if (item.MadeIn == Country)
+                    {
+                        Console.WriteLine("Product Name: " + item.ProductName + " | Manufacturer Name: " + item.ManufaturerName + " | Made in: " + item.MadeIn);
+
+                        i = true;
+                    }
+
+
                 }
 
+                if (i == false)
+                {
+                    Console.WriteLine($"there is no country named like {Country}");
+                }
 
             }
-
-            if (i == false)
-            {
-                Console.WriteLine($"there is no country named like {Country}");
-            }
-
-
             Console.ReadLine();
         }
 
