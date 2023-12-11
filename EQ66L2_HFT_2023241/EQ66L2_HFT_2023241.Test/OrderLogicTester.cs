@@ -1,5 +1,4 @@
 ﻿using EQ66L2_HFT_2023241.Models;
-using EQ66L2_HFT_2023241.Repository;
 using Moq;
 using NUnit.Framework;
 using System;
@@ -15,6 +14,7 @@ using System.Runtime.Intrinsics.X86;
 using Microsoft.EntityFrameworkCore;
 using System.IO;
 using NUnit.Framework.Constraints;
+using EQ66L2_HFT_2023241.Repository.Interfaces;
 
 namespace EQ66L2_HFT_2023241.Test
 {

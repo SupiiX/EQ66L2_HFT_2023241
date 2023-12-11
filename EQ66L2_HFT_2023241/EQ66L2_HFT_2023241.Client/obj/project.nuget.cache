@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Lhr0DLc4Q4BwyEdPkJDndlOuKUu7Ef9Vve2UOqJDTXIYjsr7z6k5pJnfOHhvEhrTMlf+G7+kdHYsaE+v+tE39w==",
+  "dgSpecHash": "0mjBbWqgV0Z1YZ0j21gCQNn/lLsE2j0h+Rga6XUOJWiF6XeEDLzPKFs9SzcjNGpFaQGsO2f4JZJB5/G5mnR0wA==",
   "success": true,
-  "projectFilePath": "G:\\X-proj\\EQ66L2_HFT_2023241\\EQ66L2_HFT_2023241.Client\\EQ66L2_HFT_2023241.Client.csproj",
+  "projectFilePath": "G:\\0.Beadas\\EQ66L2_HFT_2023241\\EQ66L2_HFT_2023241.Client\\EQ66L2_HFT_2023241.Client.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Supw2\\.nuget\\packages\\consolemenu-simple\\2.6.1\\consolemenu-simple.2.6.1.nupkg.sha512",
     "C:\\Users\\Supw2\\.nuget\\packages\\microsoft.aspnet.webapi.client\\5.2.7\\microsoft.aspnet.webapi.client.5.2.7.nupkg.sha512",

@@ -7,27 +7,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EQ66L2_HFT_2023241.Repository
+namespace EQ66L2_HFT_2023241.Repository.Database
 {
     public class DBContext : DbContext
-
-
-        ////// 
-
-
-
     {
         public virtual DbSet<Customer> Customers { get; set; }
 
         public virtual DbSet<Order> Orders { get; set; }
-       
+
         public virtual DbSet<Product> Products { get; set; }
 
         public virtual DbSet<Manufacturer> Manufacturers { get; set; }
 
         public DBContext()
         {
-           this.Database.EnsureCreated();
+            Database.EnsureCreated();
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -38,10 +32,9 @@ namespace EQ66L2_HFT_2023241.Repository
             if (!optionsBuilder.IsConfigured)
             {
                 optionsBuilder.UseLazyLoadingProxies().UseInMemoryDatabase("data");
-              
+
             }
 
-          
         }
 
 
@@ -51,6 +44,10 @@ namespace EQ66L2_HFT_2023241.Repository
 
             //connections
 
+            /// need work here !!!!!!!
+
+
+
             modelBuilder.Entity<Manufacturer>()
                 .HasMany(x => x.Products)
                 .WithOne(x => x.Manufacturer)
@@ -58,7 +55,7 @@ namespace EQ66L2_HFT_2023241.Repository
                 .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<Order>()
-                .HasOne( x => x.Product)
+                .HasOne(x => x.Product)
                 .WithMany(x => x.Orders)
                 .HasForeignKey(x => x.ProductID)
                 .OnDelete(DeleteBehavior.Cascade);
@@ -85,7 +82,7 @@ namespace EQ66L2_HFT_2023241.Repository
             //                   .HasForeignKey(t => t.CustomerID)
             //                   .OnDelete(DeleteBehavior.Cascade)
             //                   );
-                                 
+
 
             //modelBuilder.Entity<Order>()
             //    .HasOne(t => t.Customer)
@@ -104,7 +101,7 @@ namespace EQ66L2_HFT_2023241.Repository
 
             List<Manufacturer> manufacturers = new List<Manufacturer>();
 
-            manufacturers.Add(new Manufacturer { ManufacturerID = 1, ManufacturerName = "Electrolux", PlaceOf = "Hungary"});
+            manufacturers.Add(new Manufacturer { ManufacturerID = 1, ManufacturerName = "Electrolux", PlaceOf = "Hungary" });
             manufacturers.Add(new Manufacturer { ManufacturerID = 2, ManufacturerName = "Sony", PlaceOf = "Japan" });
             manufacturers.Add(new Manufacturer { ManufacturerID = 3, ManufacturerName = "Samsung", PlaceOf = "South Korea" });
             manufacturers.Add(new Manufacturer { ManufacturerID = 4, ManufacturerName = "Apple", PlaceOf = "United States" });
@@ -130,10 +127,10 @@ namespace EQ66L2_HFT_2023241.Repository
             manufacturers.Add(new Manufacturer { ManufacturerID = 24, ManufacturerName = "BlackBerry", PlaceOf = "Canada" });
             manufacturers.Add(new Manufacturer { ManufacturerID = 25, ManufacturerName = "Casio", PlaceOf = "Japan" });
             manufacturers.Add(new Manufacturer { ManufacturerID = 26, ManufacturerName = "Pioneer", PlaceOf = "Japan" });
-            
+
             List<Product> products = new List<Product>();
 
-            products.Add(new Product { ProductID = 1, Price = 150 ,ProductName = "Mikro", Warranty_year = 3, ManufacturerID = 1 });
+            products.Add(new Product { ProductID = 1, Price = 150, ProductName = "Mikro", Warranty_year = 3, ManufacturerID = 1 });
             products.Add(new Product { ProductID = 2, Price = 120, ProductName = "LED TV", Warranty_year = 2, ManufacturerID = 3 });
             products.Add(new Product { ProductID = 3, Price = 300, ProductName = "iPhone 13", Warranty_year = 1, ManufacturerID = 4 });
             products.Add(new Product { ProductID = 4, Price = 80, ProductName = "Wireless Mouse", Warranty_year = 2, ManufacturerID = 5 });
@@ -158,7 +155,7 @@ namespace EQ66L2_HFT_2023241.Repository
             products.Add(new Product { ProductID = 23, Price = 120, ProductName = "BlackBerry Key2", Warranty_year = 1, ManufacturerID = 24 });
             products.Add(new Product { ProductID = 24, Price = 80, ProductName = "Casio G-Shock Watch", Warranty_year = 2, ManufacturerID = 25 });
             products.Add(new Product { ProductID = 25, Price = 150, ProductName = "Pioneer Headphones", Warranty_year = 2, ManufacturerID = 26 });
-            
+
 
             List<Customer> customers = new List<Customer>();
 
@@ -191,7 +188,7 @@ namespace EQ66L2_HFT_2023241.Repository
 
             List<Order> orders = new List<Order>();
 
-            orders.Add(new Order {  OrderID = 1, Quantity=4, OrderDate = new DateTime(2022, 10, 16) , CustomerID = customers[0].CustomerID, ProductID = products[0].ProductID});
+            orders.Add(new Order { OrderID = 1, Quantity = 4, OrderDate = new DateTime(2022, 10, 16), CustomerID = customers[0].CustomerID, ProductID = products[0].ProductID });
             orders.Add(new Order { OrderID = 2, Quantity = 2, OrderDate = new DateTime(2022, 10, 17), CustomerID = customers[5].CustomerID, ProductID = products[9].ProductID });
             orders.Add(new Order { OrderID = 3, Quantity = 1, OrderDate = new DateTime(2022, 10, 18), CustomerID = customers[1].CustomerID, ProductID = products[15].ProductID });
             orders.Add(new Order { OrderID = 4, Quantity = 3, OrderDate = new DateTime(2022, 10, 19), CustomerID = customers[8].CustomerID, ProductID = products[7].ProductID });
@@ -216,7 +213,7 @@ namespace EQ66L2_HFT_2023241.Repository
             orders.Add(new Order { OrderID = 23, Quantity = 1, OrderDate = new DateTime(2022, 9, 7), CustomerID = customers[18].CustomerID, ProductID = products[3].ProductID });
             orders.Add(new Order { OrderID = 24, Quantity = 3, OrderDate = new DateTime(2022, 11, 8), CustomerID = customers[23].CustomerID, ProductID = products[14].ProductID });
             orders.Add(new Order { OrderID = 25, Quantity = 4, OrderDate = new DateTime(2022, 8, 9), CustomerID = customers[13].CustomerID, ProductID = products[17].ProductID });
-            
+
 
             modelBuilder.Entity<Manufacturer>().HasData(manufacturers);
 
@@ -228,7 +225,7 @@ namespace EQ66L2_HFT_2023241.Repository
         }
 
 
-      
+
 
     }
 }

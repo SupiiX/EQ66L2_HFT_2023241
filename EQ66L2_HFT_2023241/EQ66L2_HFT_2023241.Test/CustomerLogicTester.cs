@@ -2,7 +2,7 @@
 using EQ66L2_HFT_2023241.Logic;
 using EQ66L2_HFT_2023241.Logic.Interfaces;
 using EQ66L2_HFT_2023241.Models;
-using EQ66L2_HFT_2023241.Repository;
+using EQ66L2_HFT_2023241.Repository.Interfaces;
 using Moq;
 using NUnit.Framework;
 using System;

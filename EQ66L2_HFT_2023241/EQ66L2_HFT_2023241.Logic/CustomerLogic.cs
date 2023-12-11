@@ -5,18 +5,21 @@ using System.Text;
 using System.Threading.Tasks;
 using EQ66L2_HFT_2023241.Logic.Interfaces;
 using EQ66L2_HFT_2023241.Models;
-using EQ66L2_HFT_2023241.Repository;
+using EQ66L2_HFT_2023241.Repository.Interfaces;
 
 
 namespace EQ66L2_HFT_2023241.Logic
 {
     public class CustomerLogic : ICustomerLogic
     {
-        ICustomerRepository CustomerRepository;
 
-        public CustomerLogic(ICustomerRepository customerRepository)
+        IReposit<Customer> reposit;
+
+
+
+        public CustomerLogic(IReposit<Customer> reposit)
         {
-            CustomerRepository = customerRepository;
+            this.reposit = reposit;
         }
 
         // CRUD
@@ -35,36 +38,31 @@ namespace EQ66L2_HFT_2023241.Logic
 
             }
 
-
-            CustomerRepository.Create(item);
+             this.reposit.Create(item);
         }
 
         public void Delete(int id)
         {
-            CustomerRepository.Delete(id);
+            this.reposit.Delete(id);
         }
 
         public Customer Read(int id)
         {
-            return CustomerRepository.Read(id);
+            return this.reposit.Read(id);
         }
 
         public IEnumerable<Customer> ReadAll()
         {
-            return CustomerRepository.ReadAll();
+            return this.reposit.ReadAll();
         }
 
         public void Update(Customer value)
         {
-            CustomerRepository.Update(value);
+            this.reposit.Update(value);
         }
 
-        public void ChangeEmail(int id, string email)
-        {
-            CustomerRepository.ChangeEmail(id, email);
-        }
-
-        /// Non CRUD
+        
+      
 
 
 

@@ -1,4 +1,6 @@
 ﻿using EQ66L2_HFT_2023241.Models;
+using EQ66L2_HFT_2023241.Repository.Database;
+using EQ66L2_HFT_2023241.Repository.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -8,27 +10,13 @@ using System.Threading.Tasks;
 
 namespace EQ66L2_HFT_2023241.Repository
 {
-    public class CustomerRepository : Reposit<Customer>, ICustomerRepository
+    public class CustomerRepository : Reposit<Customer>
     {
         //ctor
         public CustomerRepository(DBContext dbContext) : base(dbContext)
         {
         }
 
-        public void ChangeEmail(int id, string email)
-        {
-            var Customer = Read(id);
-
-            if (Customer != null)
-            {
-                Customer.Email = email;
-                dbContext.SaveChanges();
-            }
-            //else
-            //{
-            //    throw new Exception("Error ID not found");
-            //}
-        }
 
         public override Customer Read(int id)
         {
@@ -41,7 +29,7 @@ namespace EQ66L2_HFT_2023241.Repository
 
             foreach (var item in OldData.GetType().GetProperties())
             {
-                //  
+                 
 
                 item.SetValue(OldData, item.GetValue(value));
 

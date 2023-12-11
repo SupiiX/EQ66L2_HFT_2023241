@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using EQ66L2_HFT_2023241.Repository.Database;
+using EQ66L2_HFT_2023241.Repository.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,22 +35,12 @@ namespace EQ66L2_HFT_2023241.Repository
 
             dbContext.SaveChanges();
         }
-
-       
-
-        //public T Read(int id)
-        //{
-        //    dbContext.Set<T>().FirstOrDefault(x => x. == id);
-        //}
-
-        //
+      
 
         public IQueryable<T> ReadAll()
         {
             return dbContext.Set<T>();
         }
-
-        //
 
         public abstract void Update(T value);
 

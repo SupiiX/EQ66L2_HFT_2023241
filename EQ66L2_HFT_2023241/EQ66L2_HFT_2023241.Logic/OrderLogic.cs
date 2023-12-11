@@ -1,6 +1,6 @@
 ﻿using EQ66L2_HFT_2023241.Logic.Interfaces;
 using EQ66L2_HFT_2023241.Models;
-using EQ66L2_HFT_2023241.Repository;
+using EQ66L2_HFT_2023241.Repository.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -13,12 +13,12 @@ namespace EQ66L2_HFT_2023241.Logic
 {
     public class OrderLogic : IOrderLogic
     {
-        IOrderRepository orderRepository;
+        IReposit<Order> reposit;
 
 
-        public OrderLogic(IOrderRepository orderRepository)
+        public OrderLogic(IReposit<Order> reposit)
         {
-            this.orderRepository = orderRepository;
+            this.reposit = reposit;
         }
 
         /// CRUD 
@@ -42,38 +42,30 @@ namespace EQ66L2_HFT_2023241.Logic
             }
 
 
-            orderRepository.Create(item);
+            this.reposit.Create(item);
         }
 
         public void Delete(int id)
         {
-            orderRepository.Delete(id);
+            this.reposit.Delete(id);
         }
 
         public Order Read(int id)
         {
-            return orderRepository.Read(id);
+            return this.reposit.Read(id);
         }
 
         public IEnumerable<Order> ReadAll()
         {
-            return orderRepository.ReadAll();
+            return this.reposit.ReadAll();
         }
 
         public void Update(Order value)
         {
-            orderRepository.Update(value);
+            this.reposit.Update(value);
         }
 
-        public void ChangeProduct(int id, int NewProductId)
-        {
-            orderRepository.ChangeProduct(id, NewProductId);
-        }
-
-        public void ChangeQuantity(int id, int Quantity)
-        {
-            orderRepository.ChangeQuantity(id, Quantity);
-        }
+        
 
         //////////////////////////////////////////////////
         /// Non CRUD
@@ -83,7 +75,7 @@ namespace EQ66L2_HFT_2023241.Logic
         {
             // melyik a elso 3 legnépszerübb termék (legtöbbet vásárolt) mennyit vásárolnak belőle-/kik-hol gyartja  
 
-            return (from X in orderRepository.ReadAll().Include(x => x.Product).ToList()
+            return (from X in this.reposit.ReadAll().Include(x => x.Product).ToList()
                    group X by new { X.ProductID, X.Product.ProductName } into grop
                    orderby grop.Sum(x => x.Quantity) descending
                    select new PupularPrd
@@ -107,7 +99,7 @@ namespace EQ66L2_HFT_2023241.Logic
             // Who spent the most money
 
             // Először lekérdezzük a rendeléseket és a hozzájuk tartozó vevőket egy listába
-            var orders = orderRepository.ReadAll().Include(x => x.Customer).ToList();
+            var orders = this.reposit.ReadAll().Include(x => x.Customer).ToList();
 
             // Majd a listán végzünk csoportosítást és kiválasztást
             return orders.GroupBy(x => x.CustomerID).Select(x => new MoneySpend
@@ -123,7 +115,7 @@ namespace EQ66L2_HFT_2023241.Logic
         public IEnumerable<CountryMostPopularPrd> PlaceOfPopularPrd()
         {
 
-            return orderRepository.ReadAll().Include(x => x.Product).ToList().
+            return this.reposit.ReadAll().Include(x => x.Product).ToList().
                         GroupBy(x => x.Product.Manufacturer.PlaceOf).
                         OrderByDescending(x => x.Sum(x => x.Quantity)).
                         Select(x => new CountryMostPopularPrd
@@ -145,7 +137,7 @@ namespace EQ66L2_HFT_2023241.Logic
             else
             {
 
-                return orderRepository.ReadAll()
+                return this.reposit.ReadAll()
                                       .Where(x => x.OrderDate.Month == Month)
                                       .Select(x => new DateOrders
                                       {
